@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DataIO : MonoBehaviour
 {
-	private string file_name = "PlayerData";
+	//private string file_name = "PlayerData";
 	
 	/*
     public PlayerData LoadPlayerData(){

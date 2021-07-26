@@ -3,10 +3,8 @@ using System;
 [Serializable]
 public class Song
 {
-	float music_speed;
-	float music_length;
-	float drop_speed;
-	int punish;
-	int recover;
-	Note[] notes;
+	public string name;
+	public float speed; // The total time to drop from top to bottom.
+	//public float music_length;
+	public Note[] notes;
 }

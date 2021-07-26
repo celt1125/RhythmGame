@@ -3,8 +3,7 @@ using System;
 [Serializable]
 public class Note
 {
-    string name;
-	string note_type;
-	float timing;
-	float position;
+	public string note_type;
+	public float timing;
+	public int position;
 }
