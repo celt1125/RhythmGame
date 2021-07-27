@@ -26,6 +26,12 @@ public class Player : MonoBehaviour
     {
 		if (Input.GetMouseButtonDown(0))
 			Move();
+		if (Input.GetMouseButton(0))
+			Move();
+		/*
+		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+		if (hit.collider.CompareTag("Player"))
+			Move();*/
     }
 	
 	private void Move(){
