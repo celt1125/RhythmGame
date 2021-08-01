@@ -8,13 +8,14 @@ public class DropNote : MonoBehaviour
 	private SpriteRenderer sprite_renderer;
 	private CircleCollider2D circle_collider;
 	private Transform osu_ring;
+	public Transform catcher;
 	private float speed;
 	private float drop_height;
 	private float bottom;
 	private float time;
-	public bool dropping = false;
+	private bool dropping = false;
 	private bool is_osu = false;
-	private bool is_type_set = false;
+	public bool freeze = false;
 	
 	private RhythmGame rhythm_game;
 	
@@ -25,41 +26,42 @@ public class DropNote : MonoBehaviour
 		
         sprite_renderer = GetComponent<SpriteRenderer>();
 		circle_collider = GetComponent<CircleCollider2D>();
+		GetComponent<Rigidbody2D>().gravityScale = 0;
 		osu_ring = transform.Find("OsuRing");
 		speed = rhythm_game.speed;
 		drop_height = -2 * Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 1.2f;
 		bottom = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 0.5f;
 		time = 0f;
+		SetType();
     }
 
     // Update is called once per frame
     void Update()
     {
-		if (!is_type_set)
-			SetType();
+		if (!freeze){
+			if (dropping)
+				Dropping();
+			if (is_osu)
+				Osu();
 		
-		if (dropping)
-			Dropping();
-		if (is_osu)
-			Osu();
-		
-		time += Time.deltaTime;
+			time += Time.deltaTime;
+		}
+		if (transform.position.y < bottom - 1f)
+			Destroy(gameObject);
     }
 	
 	private void SetType(){
 		switch (transform.name){
-			case "big":
+			case "main":
 				sprite_renderer.sprite = note_img[0];
 				dropping = true;
 				circle_collider.radius = 0.4f;
-				is_type_set = true;
 				break;
 				
-			case "small":
+			case "auxiliary":
 				sprite_renderer.sprite = note_img[1];
 				dropping = true;
 				circle_collider.radius = 0.15f;
-				is_type_set = true;
 				break;
 				
 			case "osu":
@@ -68,7 +70,6 @@ public class DropNote : MonoBehaviour
 				dropping = false;
 				is_osu = true;
 				circle_collider.radius = 0.4f;
-				is_type_set = true;
 				break;
 				
 			default:
@@ -104,8 +105,14 @@ public class DropNote : MonoBehaviour
 		if (dropping){
 			if (other.gameObject.CompareTag("Catcher")){
 				rhythm_game.CatchNote(true, 2);
-				Destroy(gameObject);
+				if (transform.name == "auxiliary")
+					Destroy(gameObject);
+				else if (transform.name == "main")
+					PutOnCatcher();
 			}
+		}
+		if (other.gameObject.CompareTag("Bottom")){
+			Destroy(gameObject);
 		}
 	}
 	
@@ -126,5 +133,21 @@ public class DropNote : MonoBehaviour
 	
 	private float AbsFloat(float num){
 		return num > 0 ? num : -num;
+	}
+	
+	private void PutOnCatcher(){
+		freeze = true;
+		transform.position = new Vector3(transform.position.x, catcher.position.y + 0.15f, 0);
+		transform.parent = catcher;
+		circle_collider.enabled = false;
+		sprite_renderer.sprite = note_img[3];
+	}
+	
+	public void CleanOut(){
+		freeze = true;
+		GetComponent<Rigidbody2D>().gravityScale = 1;
+		float horizontal_force = transform.position.x - catcher.position.x;
+		horizontal_force = horizontal_force < 0 ? -(1.4f + horizontal_force) : 1.4f - horizontal_force;
+		GetComponent<Rigidbody2D>().AddForce(new Vector2 (horizontal_force, 2.0f), ForceMode2D.Impulse);
 	}
 }

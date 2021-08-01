@@ -6,7 +6,6 @@ public class RhythmGame : MonoBehaviour
 {
 	public GameObject note_prefab;
 	
-	public Song[] song_list;
 	private Song song;
 	public float speed;
 	private float time;
@@ -16,12 +15,15 @@ public class RhythmGame : MonoBehaviour
 	private int ptr;
 	private float limit;
 	private bool is_music_play = false;
+	private string mode;
 	
 	private AudioManager AM;
-	
+	public Transform note_pool;
+	public Transform catcher;
 	
 	void Awake(){
-        song = song_list[0];
+		song = DataIO.LoadSongData("LittleStar");
+        //song = song_list[0];
 	}
 	
     // Start is called before the first frame update
@@ -60,8 +62,14 @@ public class RhythmGame : MonoBehaviour
     }
 	
 	private void DropNote(Note note){
-		GameObject new_note = Instantiate(note_prefab, new Vector3(-limit + 2*limit*note.position*0.05f,10,0), Quaternion.identity);
-		new_note.name = note.note_type;
+		if (note.note_type == "bar"){
+			StartCoroutine(Wait(speed, () => { CleanCatcher(); }));
+		}
+		else{
+			GameObject new_note = Instantiate(note_prefab, new Vector3(-limit + 2*limit*note.position*0.05f,10,0),
+											Quaternion.identity, note_pool.transform);
+			new_note.name = note.note_type;
+		}
 	}
 	
 	public void CatchNote(bool success, int status){ // status: 0 for bad, 1 for good, 2 for excellent
@@ -85,5 +93,17 @@ public class RhythmGame : MonoBehaviour
 			combo = 0;
 		}
 		print($"{combo}, {score}, {status}");
+	}
+	
+	private IEnumerator Wait(float wait_time, System.Action callback = null){
+		yield return new WaitForSeconds(wait_time);
+		callback?.Invoke();
+	}
+	
+	private void CleanCatcher(){
+		print("drop");
+		foreach(Transform child in catcher){
+			child.GetComponent<DropNote>().CleanOut();
+		}
 	}
 }

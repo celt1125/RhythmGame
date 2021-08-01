@@ -1,0 +1,30 @@
+{
+   "name": "LittleStar",
+   "speed": 3,
+   "score": 0,
+   "notes": [{
+         "note_type": "main",
+         "timing": 1,
+         "position": 4
+      },{
+         "note_type": "main",
+         "timing": 1.2,
+         "position": 6
+      },{
+         "note_type": "main",
+         "timing": 1.4,
+         "position": 8
+      },{
+         "note_type": "main",
+         "timing": 1.6,
+         "position": 6
+      },{
+         "note_type": "main",
+         "timing": 1.8,
+         "position": 4
+      },{
+         "note_type": "bar",
+         "timing": 2.0,
+         "position": 12
+      }]
+}
