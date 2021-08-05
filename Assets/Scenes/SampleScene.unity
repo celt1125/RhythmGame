@@ -478,7 +478,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -514,11 +514,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: 
-    clip: {fileID: 0}
+  - name: LittleStar
+    clip: {fileID: 8300000, guid: e0d667764e0ff804e82ec585ae5e8e96, type: 3}
     output: {fileID: -51428663985551052, guid: dc75221998e94894bb586a9226a6813a, type: 2}
-    volume: 0
-    pitch: 0
+    volume: 0.416
+    pitch: 1
+    source: {fileID: 0}
+  - name: SIxteenthNotes
+    clip: {fileID: 8300000, guid: a7583baad0a7630409cf29bbcbd5bc22, type: 3}
+    output: {fileID: -51428663985551052, guid: dc75221998e94894bb586a9226a6813a, type: 2}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Testing
+    clip: {fileID: 8300000, guid: de4ca3718d6f88d41b46d6ae41d61816, type: 3}
+    output: {fileID: -51428663985551052, guid: dc75221998e94894bb586a9226a6813a, type: 2}
+    volume: 1
+    pitch: 1
     source: {fileID: 0}
 --- !u!4 &1168602498
 Transform:
@@ -612,8 +624,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313623912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.28, y: -3.97, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -0.02, y: -3.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 813574533}
   m_Father: {fileID: 0}
@@ -674,19 +686,27 @@ PrefabInstance:
       objectReference: {fileID: 365997984}
     - target: {fileID: 7707497632373485752, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: note_img.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485752, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: note_img.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 4ece0890bbf70f241b9324b465f442c9, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632373485753, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485753, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_DrawMode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485754, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_Name
       value: Note
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632373485754, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485755, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_RootOrder
@@ -694,11 +714,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485755, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.390625
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485755, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.390625
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485755, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -738,6 +758,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7707497632373485755, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632373485758, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632571367277, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_Size.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632571367277, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_Size.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 7707497632571367277, guid: 6b120c1e67d5c43479bba1674cadf43d, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

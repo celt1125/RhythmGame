@@ -16,6 +16,8 @@ public class DropNote : MonoBehaviour
 	private bool dropping = false;
 	private bool is_osu = false;
 	public bool freeze = false;
+	public bool clear;
+	private float regular_size = 2.56f;
 	
 	private RhythmGame rhythm_game;
 	
@@ -43,33 +45,45 @@ public class DropNote : MonoBehaviour
 				Dropping();
 			if (is_osu)
 				Osu();
-		
 			time += Time.deltaTime;
 		}
-		if (transform.position.y < bottom - 1f)
-			Destroy(gameObject);
+		else{
+			if (transform.position.y < bottom - 2.5f)
+				Destroy(gameObject);
+		}
     }
 	
 	private void SetType(){
 		switch (transform.name){
 			case "main":
 				sprite_renderer.sprite = note_img[0];
+				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				dropping = true;
-				circle_collider.radius = 0.4f;
+				circle_collider.radius = regular_size * 0.2f;
 				break;
 				
 			case "auxiliary":
 				sprite_renderer.sprite = note_img[1];
+				sprite_renderer.size = new Vector2(regular_size / 4f, regular_size / 4f);
 				dropping = true;
-				circle_collider.radius = 0.15f;
+				circle_collider.radius = regular_size * 0.05f;
 				break;
 				
 			case "osu":
 				sprite_renderer.sprite = note_img[2];
+				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				sprite_renderer.sortingLayerName = "OsuNote";
 				dropping = false;
 				is_osu = true;
-				circle_collider.radius = 0.4f;
+				circle_collider.radius = regular_size * 0.5f;
+				Destroy(GetComponent<Rigidbody2D>());
+				break;
+				
+			case "ornament":
+				sprite_renderer.sprite = note_img[3];
+				sprite_renderer.size = new Vector2(regular_size * 0.75f, regular_size * 0.75f);
+				dropping = true;
+				circle_collider.radius = regular_size * 0.125f;
 				break;
 				
 			default:
@@ -79,12 +93,15 @@ public class DropNote : MonoBehaviour
 	}
 	
 	private void Dropping(){
-		float y_pos = drop_height - (drop_height - bottom) * time / speed;
+		float y_pos = drop_height - (drop_height - catcher.position.y) * time / speed;
 		if (y_pos > bottom)
 			transform.position = new Vector3(transform.position.x, y_pos, 0);
 		else{
 			Destroy(gameObject);
-			rhythm_game.CatchNote(false, 0);
+			if (transform.name != "auxiliary")
+				rhythm_game.CatchNote(false, 0);
+			if (clear)
+				rhythm_game.CleanCatcher();
 		}
 	}
 	
@@ -93,41 +110,60 @@ public class DropNote : MonoBehaviour
 			osu_ring.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
 			transform.position = new Vector3(transform.position.x, 0, 0);
 			float ratio = (speed - time) / speed;
-			osu_ring.GetComponent<SpriteRenderer>().size = new Vector2(1f + ratio, 1f + ratio);
+			osu_ring.GetComponent<SpriteRenderer>().size = new Vector2(regular_size * (1f + ratio), regular_size * (1f + ratio));
 		}
 		if (time > speed * 1.2f){
 			rhythm_game.CatchNote(false, 0);
-			Destroy(gameObject);
+			print("no touch");
+			freeze = true;
+			StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
 		}
 	}
 	
 	void OnTriggerEnter2D(Collider2D other){
 		if (dropping){
 			if (other.gameObject.CompareTag("Catcher")){
-				rhythm_game.CatchNote(true, 2);
-				if (transform.name == "auxiliary")
+				if (transform.name == "auxiliary"){
+					rhythm_game.CatchNote(true, 3);
 					Destroy(gameObject);
-				else if (transform.name == "main")
+				}
+				else if (transform.name == "main"){
+					rhythm_game.CatchNote(true, 2);
 					PutOnCatcher();
+					if (clear){
+						rhythm_game.CleanCatcher();
+					}
+				}
+				else if (transform.name == "ornament")
+					rhythm_game.CatchNote(true, 1);
 			}
-		}
-		if (other.gameObject.CompareTag("Bottom")){
-			Destroy(gameObject);
 		}
 	}
 	
 	void OnMouseDown(){
 		if (!dropping){
 			float ratio = AbsFloat((speed - time) / speed * 2f);
-			if (ratio < 0.2f)
+			freeze = true;
+			if (ratio < 0.2f){
 				rhythm_game.CatchNote(true, 2);
-			else if (ratio < 0.4f)
+				print(2);
+				StartCoroutine(FadeOut(true, () => {Destroy(gameObject);}));
+			}
+			else if (ratio < 0.4f){
 				rhythm_game.CatchNote(true, 1);
-			else if (ratio < 0.7f)
+				print(1);
+				StartCoroutine(FadeOut(true, () => {Destroy(gameObject);}));
+			}
+			else if (ratio < 0.7f){
 				rhythm_game.CatchNote(true, 0);
-			else
+				print(0);
+				StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
+			}
+			else{
 				rhythm_game.CatchNote(false, 0);
-			Destroy(gameObject);
+				print(0);
+				StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
+			}
 		}
 	}
 	
@@ -140,14 +176,53 @@ public class DropNote : MonoBehaviour
 		transform.position = new Vector3(transform.position.x, catcher.position.y + 0.15f, 0);
 		transform.parent = catcher;
 		circle_collider.enabled = false;
-		sprite_renderer.sprite = note_img[3];
+		sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
 	}
 	
 	public void CleanOut(){
+		// StartRoutine(FadeOut())
+		// increase jumping height
 		freeze = true;
+		transform.parent = null;
 		GetComponent<Rigidbody2D>().gravityScale = 1;
 		float horizontal_force = transform.position.x - catcher.position.x;
-		horizontal_force = horizontal_force < 0 ? -(1.4f + horizontal_force) : 1.4f - horizontal_force;
-		GetComponent<Rigidbody2D>().AddForce(new Vector2 (horizontal_force, 2.0f), ForceMode2D.Impulse);
+		horizontal_force = horizontal_force < 0 ? horizontal_force * 0.5f : horizontal_force * 0.5f;
+		GetComponent<Rigidbody2D>().AddForce(new Vector2 (horizontal_force, 2.5f), ForceMode2D.Impulse);
+		StartCoroutine(FadeOut(true));
+	}
+	
+	private IEnumerator FadeOut(bool success, System.Action callback = null){
+		Destroy(osu_ring.gameObject);
+		if (transform.name == "osu"){ // time: speed / 4
+			float total_time = speed / 4f;
+			if (success){
+				for (float ratio = 0.5f; ratio > 0f; ratio -= Time.deltaTime * 0.5f / total_time){
+					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.75f + ratio * 0.5f);
+					sprite_renderer.size = new Vector2(regular_size * (1.5f - ratio), regular_size * (1.5f - ratio));
+					yield return null;
+				}
+				sprite_renderer.size = new Vector2(regular_size * 1.5f, regular_size * 1.5f);
+				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0);
+			}
+			else{
+				Rigidbody2D rigid_body = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
+				rigid_body.gravityScale = 0.5f;
+				for (float ratio = 0.25f; ratio > 0f; ratio -= Time.deltaTime * 0.25f / total_time){
+					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.75f + ratio);
+					yield return null;
+				}
+				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0);
+			}
+		}
+		else{ // time: speed / 2
+			float total_time = speed / 3f;
+			for (float ratio = 1f; ratio > 0f; ratio -= Time.deltaTime / total_time){
+				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, ratio);
+				yield return null;
+			}
+			sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0);
+		}
+		
+		callback?.Invoke();
 	}
 }

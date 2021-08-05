@@ -1,30 +1,280 @@
 {
    "name": "LittleStar",
-   "speed": 3,
-   "score": 0,
+   "speed": 2.25,
    "notes": [{
          "note_type": "main",
-         "timing": 1,
-         "position": 4
+         "timing": 0.02993197,
+         "position": 6,
+         "clear": false
       },{
          "note_type": "main",
-         "timing": 1.2,
-         "position": 6
+         "timing": 0.529932,
+         "position": 6,
+         "clear": false
       },{
          "note_type": "main",
-         "timing": 1.4,
-         "position": 8
+         "timing": 1.029932,
+         "position": 20,
+         "clear": false
       },{
          "note_type": "main",
-         "timing": 1.6,
-         "position": 6
+         "timing": 1.529932,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 2.029932,
+         "position": 22,
+         "clear": false
       },{
          "note_type": "main",
-         "timing": 1.8,
-         "position": 4
+         "timing": 2.029932,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 2.529932,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 3.029932,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "osu",
+         "timing": 4.029932,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 4.029932,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 4.529932,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.029932,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.529932,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 6.029932,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.029932,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.529932,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 7.029932,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "osu",
+         "timing": 8.029932,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 8.029932,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 8.529932,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.029932,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.529932,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 10.02993,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.02993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.52993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 11.02993,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "osu",
+         "timing": 12.02993,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 12.02993,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 12.52993,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.02993,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.52993,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 14.02993,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.02993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.52993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 15.02993,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "osu",
+         "timing": 16.02993,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.02993,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.52993,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.02993,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.52993,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 18.02993,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.02993,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.52993,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 19.02993,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "osu",
+         "timing": 20.02993,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.02993,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.52993,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.02993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.52993,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 22.02993,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.02993,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.52993,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.90493,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 23.02993,
+         "position": 6,
+         "clear": false
       },{
          "note_type": "bar",
-         "timing": 2.0,
-         "position": 12
+         "timing": 23.09243,
+         "position": 0,
+         "clear": false
       }]
 }

@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 	
 	private void Move(){
 		Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-		if (mouse_pos.y < origin.y + player_height){
+		if (mouse_pos.y < origin.y + player_height * 1.3f){
 			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width*0.5f))
 				transform.position += new Vector3(mouse_pos.x - transform.position.x, 0, 0);
 			else{

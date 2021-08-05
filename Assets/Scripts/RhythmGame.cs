@@ -38,7 +38,6 @@ public class RhythmGame : MonoBehaviour
 		limit = -Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 0.5f;
 		
 		AM = FindObjectOfType<AudioManager>();
-		//AM.Play(song.name);
     }
 
     // Update is called once per frame
@@ -62,14 +61,10 @@ public class RhythmGame : MonoBehaviour
     }
 	
 	private void DropNote(Note note){
-		if (note.note_type == "bar"){
-			StartCoroutine(Wait(speed, () => { CleanCatcher(); }));
-		}
-		else{
-			GameObject new_note = Instantiate(note_prefab, new Vector3(-limit + 2*limit*note.position*0.05f,10,0),
-											Quaternion.identity, note_pool.transform);
-			new_note.name = note.note_type;
-		}
+		GameObject new_note = Instantiate(note_prefab, new Vector3(-limit + 2*limit*note.position/22,10,0),
+										Quaternion.identity, note_pool.transform);
+		new_note.name = note.note_type;
+		new_note.GetComponent<DropNote>().clear = note.clear;
 	}
 	
 	public void CatchNote(bool success, int status){ // status: 0 for bad, 1 for good, 2 for excellent
@@ -88,11 +83,14 @@ public class RhythmGame : MonoBehaviour
 				score += combo * 10;
 				score += 300;
 			}
+			else if (status == 3){
+				score += 50;
+			}
 		}
 		else{
 			combo = 0;
 		}
-		print($"{combo}, {score}, {status}");
+		//print($"{combo}, {score}, {status}");
 	}
 	
 	private IEnumerator Wait(float wait_time, System.Action callback = null){
@@ -100,10 +98,11 @@ public class RhythmGame : MonoBehaviour
 		callback?.Invoke();
 	}
 	
-	private void CleanCatcher(){
-		print("drop");
-		foreach(Transform child in catcher){
+	public void CleanCatcher(){
+		List<Transform> clean_list = new List<Transform>();
+		foreach(Transform child in catcher)
+			clean_list.Add(child);
+		foreach(Transform child in clean_list)
 			child.GetComponent<DropNote>().CleanOut();
-		}
 	}
 }
