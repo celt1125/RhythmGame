@@ -24,6 +24,10 @@ public class RhythmGame : MonoBehaviour
 	void Awake(){
 		song = DataIO.LoadSongData("LittleStar");
         //song = song_list[0];
+		/*
+		if (PlayerPrefs.GetInt("skin") == null)
+			PlayerPrefs.SetInt("skin", 0);
+		*/
 	}
 	
     // Start is called before the first frame update

@@ -8,15 +8,15 @@ public class Player : MonoBehaviour
 	private SpriteRenderer sprite_renderer;
 	private float player_height;
 	private float player_width;
+	private ImageManager IM;
 	
     // Start is called before the first frame update
     void Start()
     {
-		sprite_renderer = GetComponent<SpriteRenderer>();
-		float y_pos = sprite_renderer.sprite.rect.height * transform.localScale.y * 0.5f / 256;
-		player_height = sprite_renderer.sprite.rect.height * transform.localScale.y / 256;
-		player_width = sprite_renderer.sprite.rect.width * transform.localScale.x / 256;
+		IM = FindObjectOfType<ImageManager>();
+		SetPlayerSkin();
 		
+		float y_pos = player_height * 0.5f;
 		origin = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
 		transform.position = origin + new Vector3(-origin.x, y_pos, -origin.z);
     }
@@ -34,9 +34,24 @@ public class Player : MonoBehaviour
 			Move();*/
     }
 	
+	private void SetPlayerSkin(){
+		sprite_renderer = GetComponent<SpriteRenderer>();
+		sprite_renderer.sprite = IM.player_image[PlayerPrefs.GetInt("skin")].image[0];
+		player_width = sprite_renderer.sprite.rect.width / 256;
+		player_height = sprite_renderer.sprite.rect.height / 256;
+		GetComponent<BoxCollider2D>().size = new Vector2(player_width, player_height);
+		
+		
+		Transform catcher = transform.Find("Catcher");
+		catcher.GetComponent<SpriteRenderer>().sprite = IM.player_image[PlayerPrefs.GetInt("skin")].image[1];
+		catcher.position = new Vector3(0, transform.position.y + IM.player_image[PlayerPrefs.GetInt("skin")].shift, 0);
+		Rect catcher_rect = IM.player_image[PlayerPrefs.GetInt("skin")].image[1].rect;
+		catcher.GetComponent<BoxCollider2D>().size = new Vector2(catcher_rect.width * 0.9f / 256, catcher_rect.height / 256);
+	}
+	
 	private void Move(){
 		Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
-		if (mouse_pos.y < origin.y + player_height * 1.3f){
+		if (mouse_pos.y < origin.y + player_height * 1.8f){
 			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width*0.5f))
 				transform.position += new Vector3(mouse_pos.x - transform.position.x, 0, 0);
 			else{

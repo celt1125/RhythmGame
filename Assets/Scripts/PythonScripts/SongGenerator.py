@@ -209,6 +209,7 @@ def GetNotes(onset, freq, amp, tempo):
                         notes.append([-1, time, freq[i], note_position])
                     notes.append([amp[i], time, freq[i], note_position])
         else:
+            notes.append([-1, time, freq[i], note_position])
             notes.append([amp[i], time, freq[i], note_position])
     
     notes_dict = []

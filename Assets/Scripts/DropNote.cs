@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DropNote : MonoBehaviour
 {
-	public Sprite[] note_img;
 	private SpriteRenderer sprite_renderer;
 	private CircleCollider2D circle_collider;
 	private Transform osu_ring;
@@ -20,11 +19,13 @@ public class DropNote : MonoBehaviour
 	private float regular_size = 2.56f;
 	
 	private RhythmGame rhythm_game;
+	private ImageManager IM;
 	
     // Start is called before the first frame update
     void Start()
     {
 		rhythm_game = FindObjectOfType<RhythmGame>();
+		IM = FindObjectOfType<ImageManager>();
 		
         sprite_renderer = GetComponent<SpriteRenderer>();
 		circle_collider = GetComponent<CircleCollider2D>();
@@ -54,23 +55,31 @@ public class DropNote : MonoBehaviour
     }
 	
 	private void SetType(){
+		osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 		switch (transform.name){
 			case "main":
-				sprite_renderer.sprite = note_img[0];
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[0];
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
+				dropping = true;
+				circle_collider.radius = regular_size * 0.32f;
+				break;
+				
+			case "ornament":
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[1];
+				sprite_renderer.size = new Vector2(regular_size * 0.75f, regular_size * 0.75f);
 				dropping = true;
 				circle_collider.radius = regular_size * 0.2f;
 				break;
 				
 			case "auxiliary":
-				sprite_renderer.sprite = note_img[1];
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[2];
 				sprite_renderer.size = new Vector2(regular_size / 4f, regular_size / 4f);
 				dropping = true;
-				circle_collider.radius = regular_size * 0.05f;
+				circle_collider.radius = regular_size * 0.08f;
 				break;
 				
 			case "osu":
-				sprite_renderer.sprite = note_img[2];
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[3];
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				sprite_renderer.sortingLayerName = "OsuNote";
 				dropping = false;
@@ -79,15 +88,8 @@ public class DropNote : MonoBehaviour
 				Destroy(GetComponent<Rigidbody2D>());
 				break;
 				
-			case "ornament":
-				sprite_renderer.sprite = note_img[3];
-				sprite_renderer.size = new Vector2(regular_size * 0.75f, regular_size * 0.75f);
-				dropping = true;
-				circle_collider.radius = regular_size * 0.125f;
-				break;
-				
 			default:
-				sprite_renderer.sprite = note_img[0];
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[0];
 				break;
 		}
 	}
@@ -107,15 +109,15 @@ public class DropNote : MonoBehaviour
 	
 	private void Osu(){
 		if (time > speed * 0.5f){
-			osu_ring.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+			osu_ring.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
 			transform.position = new Vector3(transform.position.x, 0, 0);
 			float ratio = (speed - time) / speed;
 			osu_ring.GetComponent<SpriteRenderer>().size = new Vector2(regular_size * (1f + ratio), regular_size * (1f + ratio));
 		}
 		if (time > speed * 1.2f){
 			rhythm_game.CatchNote(false, 0);
-			print("no touch");
 			freeze = true;
+			circle_collider.enabled = false;
 			StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
 		}
 	}
@@ -146,22 +148,18 @@ public class DropNote : MonoBehaviour
 			freeze = true;
 			if (ratio < 0.2f){
 				rhythm_game.CatchNote(true, 2);
-				print(2);
 				StartCoroutine(FadeOut(true, () => {Destroy(gameObject);}));
 			}
 			else if (ratio < 0.4f){
 				rhythm_game.CatchNote(true, 1);
-				print(1);
 				StartCoroutine(FadeOut(true, () => {Destroy(gameObject);}));
 			}
 			else if (ratio < 0.7f){
 				rhythm_game.CatchNote(true, 0);
-				print(0);
 				StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
 			}
 			else{
 				rhythm_game.CatchNote(false, 0);
-				print(0);
 				StartCoroutine(FadeOut(false, () => {Destroy(gameObject);}));
 			}
 		}
@@ -186,7 +184,6 @@ public class DropNote : MonoBehaviour
 		transform.parent = null;
 		GetComponent<Rigidbody2D>().gravityScale = 1;
 		float horizontal_force = transform.position.x - catcher.position.x;
-		horizontal_force = horizontal_force < 0 ? horizontal_force * 0.5f : horizontal_force * 0.5f;
 		GetComponent<Rigidbody2D>().AddForce(new Vector2 (horizontal_force, 2.5f), ForceMode2D.Impulse);
 		StartCoroutine(FadeOut(true));
 	}
@@ -196,19 +193,21 @@ public class DropNote : MonoBehaviour
 		if (transform.name == "osu"){ // time: speed / 4
 			float total_time = speed / 4f;
 			if (success){
-				for (float ratio = 0.5f; ratio > 0f; ratio -= Time.deltaTime * 0.5f / total_time){
-					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.75f + ratio * 0.5f);
-					sprite_renderer.size = new Vector2(regular_size * (1.5f - ratio), regular_size * (1.5f - ratio));
+				for (float ratio = 0.25f; ratio > 0f; ratio -= Time.deltaTime * 0.25f / total_time){
+					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.5f + ratio * 2f);
+					sprite_renderer.size = new Vector2(regular_size * (1.25f - ratio), regular_size * (1.25f - ratio));
 					yield return null;
 				}
-				sprite_renderer.size = new Vector2(regular_size * 1.5f, regular_size * 1.5f);
+				sprite_renderer.size = new Vector2(regular_size * 1.25f, regular_size * 1.25f);
 				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0);
 			}
 			else{
+				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[5];
+				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
 				Rigidbody2D rigid_body = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
 				rigid_body.gravityScale = 0.5f;
-				for (float ratio = 0.25f; ratio > 0f; ratio -= Time.deltaTime * 0.25f / total_time){
-					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.75f + ratio);
+				for (float ratio = 0.5f; ratio > 0f; ratio -= Time.deltaTime * 0.5f / total_time){
+					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.5f + ratio);
 					yield return null;
 				}
 				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0);
