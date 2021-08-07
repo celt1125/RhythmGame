@@ -17,12 +17,13 @@ public class AudioManager : MonoBehaviour
 		}
     }
 
-    public void Play (string name){
+    public float Play (string name){
 		Sound s = Array.Find(sounds, sound => sound.name == name);
 		if (s == null){
 			print("no such song");
-			return;
+			return 0;
 		}
 		s.source.Play();
+		return s.source.clip.length;
 	}
 }

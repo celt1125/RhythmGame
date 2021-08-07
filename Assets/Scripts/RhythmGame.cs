@@ -16,13 +16,16 @@ public class RhythmGame : MonoBehaviour
 	private float limit;
 	private bool is_music_play = false;
 	private string mode;
+	private float song_length;
 	
 	private AudioManager AM;
 	public Transform note_pool;
 	public Transform catcher;
 	
+	private ObjectPooler object_pooler;
+	
 	void Awake(){
-		song = DataIO.LoadSongData("LittleStar");
+		song = DataIO.LoadSongData("Testing");
         //song = song_list[0];
 		/*
 		if (PlayerPrefs.GetInt("skin") == null)
@@ -34,7 +37,7 @@ public class RhythmGame : MonoBehaviour
     void Start()
     {
 		speed = song.speed;
-		time = 0;
+		time = -0.5f;
 		score = 0;
 		combo = 0;
 		length = song.notes.Length;
@@ -42,6 +45,7 @@ public class RhythmGame : MonoBehaviour
 		limit = -Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 0.5f;
 		
 		AM = FindObjectOfType<AudioManager>();
+		object_pooler = ObjectPooler.instance;
     }
 
     // Update is called once per frame
@@ -57,17 +61,20 @@ public class RhythmGame : MonoBehaviour
 		}
 		if (!is_music_play){
 			if (speed < time){
-				AM.Play(song.name);
+				song_length = AM.Play(song.name);
+				song_length += 0.5f;
 				is_music_play = true;
 			}
 		}
+		else
+			if (time > song_length)
+				EndGame();
 		time += Time.deltaTime;
     }
 	
 	private void DropNote(Note note){
-		GameObject new_note = Instantiate(note_prefab, new Vector3(-limit + 2*limit*note.position/22,10,0),
-										Quaternion.identity, note_pool.transform);
-		new_note.name = note.note_type;
+		GameObject new_note = object_pooler.SpawnFromPool(note.note_type, new Vector3(-limit + 2*limit*note.position/22,10,0),
+													Quaternion.identity, note_pool.transform);
 		new_note.GetComponent<DropNote>().clear = note.clear;
 	}
 	
@@ -108,5 +115,10 @@ public class RhythmGame : MonoBehaviour
 			clean_list.Add(child);
 		foreach(Transform child in clean_list)
 			child.GetComponent<DropNote>().CleanOut();
+	}
+	
+	private void EndGame(){
+		Time.timeScale = 0;
+		//print("END");
 	}
 }

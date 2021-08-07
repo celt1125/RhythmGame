@@ -315,11 +315,6 @@
          "note_type": "main",
          "timing": 7.529932,
          "position": 10,
-         "clear": false
-      },{
-         "note_type": "bar",
-         "timing": 7.592432,
-         "position": 0,
-         "clear": false
+         "clear": true
       }]
 }

@@ -845,11 +845,6 @@
          "note_type": "ornament",
          "timing": 23.01542,
          "position": 0,
-         "clear": false
-      },{
-         "note_type": "bar",
-         "timing": 23.07792,
-         "position": 0,
-         "clear": false
+         "clear": true
       }]
 }
