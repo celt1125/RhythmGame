@@ -33,7 +33,6 @@ public class DropNote : MonoBehaviour, IPooledObject
 		circle_collider = GetComponent<CircleCollider2D>();
 		GetComponent<Rigidbody2D>().gravityScale = 0;
 		osu_ring = transform.Find("OsuRing");
-		speed = rhythm_game.speed;
 		drop_height = -2 * Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 1.2f;
 		bottom = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 0.5f;
 		time = 0f;
@@ -47,7 +46,9 @@ public class DropNote : MonoBehaviour, IPooledObject
 		time = 0f;
 		osu_ring.gameObject.SetActive(true);
 		freeze = false;
+		speed = rhythm_game.speed;
 		sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 1f);
+		circle_collider.enabled = true;
 		
 		switch (transform.name){
 			case "main":
@@ -88,7 +89,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				dropping = true;
 				circle_collider.radius = regular_size * 0.32f;
-				GetComponent<Rigidbody2D>().AddTorque(Random.Range(50.0f, 100.0f));
+				GetComponent<Rigidbody2D>().AddTorque(Random.Range(100.0f, 150.0f));
 				break;
 				
 			case "ornament":
@@ -96,7 +97,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
 				dropping = true;
 				circle_collider.radius = regular_size * 0.16f;
-				GetComponent<Rigidbody2D>().AddTorque(Random.Range(100.0f, 150.0f));
+				GetComponent<Rigidbody2D>().AddTorque(Random.Range(150.0f, 200.0f));
 				break;
 				
 			case "auxiliary":
@@ -248,7 +249,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 			}
 		}
 		else{ // time: speed / 2
-			float total_time = speed / 3f;
+			float total_time = speed / 2f;
 			for (float ratio = 1f; ratio > 0f; ratio -= Time.deltaTime / total_time){
 				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, ratio);
 				yield return null;

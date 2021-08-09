@@ -1,7 +1,12 @@
 {
    "name": "LittleStar",
-   "speed": 2.25,
+   "speed": 1.55,
    "notes": [{
+         "note_type": "osu",
+         "timing": 0.02993197,
+         "position": 16,
+         "clear": false
+      },{
          "note_type": "main",
          "timing": 0.02993197,
          "position": 6,

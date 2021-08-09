@@ -5,6 +5,7 @@ using UnityEngine;
 public class RhythmGame : MonoBehaviour
 {
 	public GameObject note_prefab;
+	public GameObject player;
 	
 	private Song song;
 	public float speed;
@@ -17,15 +18,17 @@ public class RhythmGame : MonoBehaviour
 	private bool is_music_play = false;
 	private string mode;
 	private float song_length;
+	private bool is_playing = false;
 	
 	private AudioManager AM;
 	public Transform note_pool;
 	public Transform catcher;
+	public Transform black_fade;
+	private SpriteRenderer black_fade_sprite;
 	
 	private ObjectPooler object_pooler;
 	
 	void Awake(){
-		song = DataIO.LoadSongData("Testing");
         //song = song_list[0];
 		/*
 		if (PlayerPrefs.GetInt("skin") == null)
@@ -36,42 +39,57 @@ public class RhythmGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		speed = song.speed;
-		time = -0.5f;
-		score = 0;
-		combo = 0;
-		length = song.notes.Length;
-		ptr = 0;
 		limit = -Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 0.5f;
-		
 		AM = FindObjectOfType<AudioManager>();
 		object_pooler = ObjectPooler.instance;
+		black_fade_sprite = black_fade.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        while (ptr < length){
-			if (song.notes[ptr].timing - time < Time.deltaTime){
-				DropNote(song.notes[ptr]);
-				ptr++;
+		if (is_playing){
+			if (time <= 0.1f)
+				PrepareForGame();
+			
+			while (ptr < length){
+				if (song.notes[ptr].timing - time < Time.deltaTime){
+					DropNote(song.notes[ptr]);
+					ptr++;
+				}
+				else
+					break;
 			}
-			else
-				break;
-		}
-		if (!is_music_play){
-			if (speed < time){
-				song_length = AM.Play(song.name);
-				song_length += 0.5f;
-				is_music_play = true;
+			if (!is_music_play){
+				if (speed < time){
+					song_length = AM.Play(song.name);
+					song_length += 0.5f;
+					is_music_play = true;
+				}
 			}
-		}
-		else
+			
 			if (time > song_length)
 				EndGame();
-		time += Time.deltaTime;
+			time += Time.deltaTime;
+		}
     }
 	
+	private void InitializeSong(string song_name){
+		song = DataIO.LoadSongData(song_name);
+		speed = song.speed;
+		length = song.notes.Length;
+		time = -0.5f;
+		score = 0;
+		combo = 0;
+		ptr = 0;
+		
+		player.SetActive(true);
+	}
+	
+	private void PrepareForGame(){
+		black_fade_sprite.color = new Color(0, 0, 0, time < 0 ? time + 1f : 1f);
+	}
+	 
 	private void DropNote(Note note){
 		GameObject new_note = object_pooler.SpawnFromPool(note.note_type, new Vector3(-limit + 2*limit*note.position/22,10,0),
 													Quaternion.identity, note_pool.transform);
@@ -118,7 +136,7 @@ public class RhythmGame : MonoBehaviour
 	}
 	
 	private void EndGame(){
-		Time.timeScale = 0;
+		player.SetActive(false);
 		//print("END");
 	}
 }

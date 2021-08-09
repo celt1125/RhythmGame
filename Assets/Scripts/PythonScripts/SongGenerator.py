@@ -213,7 +213,6 @@ def GetNotes(onset, freq, amp, tempo):
             notes.append([amp[i], time, freq[i], note_position])
     
     notes_dict = []
-    amp_thres = 0.1
     
     i = 0
     t = onset[0]
@@ -234,20 +233,45 @@ def GetNotes(onset, freq, amp, tempo):
                 else:
                     if (notes[i][3] % 16 < notes[i - 1][3] % 16):
                         if (accumulated_notes >= 8):
+                            is_end = True
                             notes_dict[-1]["clear"] = True
                             accumulated_notes = 0
             
             if (notes[i][0] == -1):
                 note_type = "osu"
-                position = 22 - note_list.index(notes[i][2]) * 2
-            elif (notes[i][0] > amp_thres):
-                note_type = "main"
-                position = note_list.index(notes[i][2]) * 2
-                accumulated_notes += 1
             else:
-                note_type = "ornament"
+                note_type = "main"
+            
+            if (note_type == "osu"):
+                position = 22 - note_list.index(notes[i][2]) * 2
+            else:
+                tmp = len(notes_dict) - 1
                 position = note_list.index(notes[i][2]) * 2
+                while (tmp >= 0):
+                    if (notes_dict[tmp]["note_type"] != "osu"):
+                        if (abs(notes_dict[tmp]["timing"] - notes[i][1]) < delta * 1.1):
+                            other_pos = notes_dict[tmp]["position"]
+                            if (other_pos < position):
+                                if (position - other_pos > 7):
+                                    position = other_pos + 8
+                            else:
+                                if (other_pos - position > 7):
+                                    position = other_pos - 8
+                        elif (abs(notes_dict[tmp]["timing"] - notes[i][1]) < delta * 2.2):
+                            other_pos = notes_dict[tmp]["position"]
+                            if (other_pos < position):
+                                if (position - other_pos > 11):
+                                    position = other_pos + 12
+                            else:
+                                if (other_pos - position > 11):
+                                    position = other_pos - 12
+                            
+                        break
+                    else:
+                        tmp -= 1
+                
                 accumulated_notes += 1
+            
         else:
             t += delta
             continue
@@ -255,7 +279,7 @@ def GetNotes(onset, freq, amp, tempo):
         
         if (not has_aux):
             if (not is_end and i > 0):
-                if (notes[i][1] - notes[i - 1][1] > delta * 5.6 and notes[i - 1][2] != "ornament"):
+                if (notes[i][1] - notes[i - 1][1] > delta * 5.6):
                     begin_position = notes_dict[-1]["position"]
                     num_time = round((notes[i][1] - notes[i - 1][1]) / delta)
                     num_pos = abs(position - begin_position)
@@ -264,36 +288,60 @@ def GetNotes(onset, freq, amp, tempo):
                             auxiliary_time = notes_dict[-1]["timing"]
                             for k in range(1, num_time):
                                 auxiliary_time += delta
-                                notes_dict.append({"note_type": "auxiliary",
-                                                   "timing": auxiliary_time,
-                                                   "position": begin_position + int((position-begin_position) * k/num_time),
-                                                   "clear": False})
+                                if (k % 4 == 3):
+                                    notes_dict.append({"note_type": "ornament",
+                                                       "timing": auxiliary_time,
+                                                       "position": begin_position + int((position-begin_position) * k/num_time),
+                                                       "clear": False})
+                                else:
+                                    notes_dict.append({"note_type": "auxiliary",
+                                                       "timing": auxiliary_time,
+                                                       "position": begin_position + int((position-begin_position) * k/num_time),
+                                                       "clear": False})
                         else:
                             auxiliary_time = notes_dict[-1]["timing"]
                             direction = random.randint(-1,1)
                             for k in range(num_time - 1):
                                 auxiliary_time += delta
-                                notes_dict.append({"note_type": "auxiliary",
-                                                   "timing": auxiliary_time,
-                                                   "position": begin_position + direction,
-                                                   "clear": False})
+                                if (k % 4 == 3):
+                                    notes_dict.append({"note_type": "ornament",
+                                                       "timing": auxiliary_time,
+                                                       "position": begin_position + direction,
+                                                       "clear": False})
+                                else:
+                                    notes_dict.append({"note_type": "auxiliary",
+                                                       "timing": auxiliary_time,
+                                                       "position": begin_position + direction,
+                                                       "clear": False})
                     else:
                         auxiliary_delta = (notes[i][1] - notes[i - 1][1]) / (num_pos - 1)
                         auxiliary_time = notes_dict[-1]["timing"]
                         if (begin_position < position):
                             for auxiliary_position in range(begin_position + 1, position):
                                 auxiliary_time += auxiliary_delta
-                                notes_dict.append({"note_type": "auxiliary",
-                                                   "timing": auxiliary_time,
-                                                   "position": auxiliary_position,
-                                                   "clear": False})
+                                if (k % 4 == 3):
+                                    notes_dict.append({"note_type": "ornament",
+                                                       "timing": auxiliary_time,
+                                                       "position": auxiliary_position,
+                                                       "clear": False})
+                                else:
+                                    notes_dict.append({"note_type": "auxiliary",
+                                                       "timing": auxiliary_time,
+                                                       "position": auxiliary_position,
+                                                       "clear": False})
                         else:
                             for auxiliary_position in range(begin_position - 1, position, -1):
                                 auxiliary_time += auxiliary_delta
-                                notes_dict.append({"note_type": "auxiliary",
-                                                   "timing": auxiliary_time,
-                                                   "position": auxiliary_position,
-                                                   "clear": False})
+                                if (k % 4 == 3):
+                                    notes_dict.append({"note_type": "ornament",
+                                                       "timing": auxiliary_time,
+                                                       "position": auxiliary_position,
+                                                       "clear": False})
+                                else:
+                                    notes_dict.append({"note_type": "auxiliary",
+                                                       "timing": auxiliary_time,
+                                                       "position": auxiliary_position,
+                                                       "clear": False})
                     
                     has_aux = True
         else:
@@ -335,9 +383,9 @@ def main(song_name, read):
     # generate song
     notes, tempo = GenerateSong(song_name + ".json", song_path, read)
     song = {"name": song_name,
-            "speed": -0.0125 * tempo + 3.75,
+            "speed": -0.015 * tempo + 3.35,
             "notes": notes}
-    
+    print(tempo)
     # write in json
     WriteJSON(JSON_path, song)
 

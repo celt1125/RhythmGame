@@ -41,12 +41,12 @@ public class Player : MonoBehaviour
 		player_height = sprite_renderer.sprite.rect.height / 256;
 		GetComponent<BoxCollider2D>().size = new Vector2(player_width, player_height);
 		
-		
 		Transform catcher = transform.Find("Catcher");
 		catcher.GetComponent<SpriteRenderer>().sprite = IM.player_image[PlayerPrefs.GetInt("skin")].image[1];
 		catcher.position = new Vector3(0, transform.position.y + IM.player_image[PlayerPrefs.GetInt("skin")].shift, 0);
 		Rect catcher_rect = IM.player_image[PlayerPrefs.GetInt("skin")].image[1].rect;
-		catcher.GetComponent<BoxCollider2D>().size = new Vector2(catcher_rect.width * 0.9f / 256, catcher_rect.height / 256);
+		catcher.GetComponent<BoxCollider2D>().size = new Vector2(catcher_rect.width * 0.9f / 256f, 0.04f);
+		//catcher.GetComponent<BoxCollider2D>().offset = new Vector2(0, IM.player_image[PlayerPrefs.GetInt("skin")].offset);
 	}
 	
 	private void Move(){
