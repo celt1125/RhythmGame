@@ -117,7 +117,7 @@ def GenerateSong(song_name, song_path, read):
     
     # frequency estimate
     if (read):
-        f0 = ReadJSONArray(song_name[:-5] + "f0.json")
+        f0 = ReadJSONArray(song_name[:-5] + " f0.json")
     else:
         print("get frequency")
         f0, voiced_flag, voiced_probs = librosa.pitch.pyin(wav_data,
@@ -126,7 +126,7 @@ def GenerateSong(song_name, song_path, read):
                                                sr=sr,
                                                frame_length=n_fft,
                                                hop_length=hop_length)
-        WriteJSON(song_name[:-5] + "f0.json", f0)
+        WriteJSON(song_name[:-5] + " f0.json", f0)
     frequency = [librosa.hz_to_note(Mean(f0[k:k+8]), octave=False) for k in onset_sf]
     #print(frequency)
     
@@ -317,6 +317,7 @@ def GetNotes(onset, freq, amp, tempo):
                         auxiliary_delta = (notes[i][1] - notes[i - 1][1]) / (num_pos - 1)
                         auxiliary_time = notes_dict[-1]["timing"]
                         if (begin_position < position):
+                            k = 0
                             for auxiliary_position in range(begin_position + 1, position):
                                 auxiliary_time += auxiliary_delta
                                 if (k % 4 == 3):
@@ -329,7 +330,9 @@ def GetNotes(onset, freq, amp, tempo):
                                                        "timing": auxiliary_time,
                                                        "position": auxiliary_position,
                                                        "clear": False})
+                                k += 1
                         else:
+                            k = 0
                             for auxiliary_position in range(begin_position - 1, position, -1):
                                 auxiliary_time += auxiliary_delta
                                 if (k % 4 == 3):
@@ -342,7 +345,7 @@ def GetNotes(onset, freq, amp, tempo):
                                                        "timing": auxiliary_time,
                                                        "position": auxiliary_position,
                                                        "clear": False})
-                    
+                                k += 1
                     has_aux = True
         else:
             has_aux = False
@@ -383,7 +386,7 @@ def main(song_name, read):
     # generate song
     notes, tempo = GenerateSong(song_name + ".json", song_path, read)
     song = {"name": song_name,
-            "speed": -0.015 * tempo + 3.35,
+            "speed": -0.018 * tempo + 3.4,
             "notes": notes}
     print(tempo)
     # write in json
@@ -395,7 +398,7 @@ def test():
     print(y)
 
 if __name__ == "__main__":
-    song_name = "SixteenthNotes"
+    song_name = "Sixteenth Notes"
     main(song_name, True)
     #test()
     

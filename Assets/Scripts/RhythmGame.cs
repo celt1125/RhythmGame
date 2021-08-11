@@ -11,6 +11,8 @@ public class RhythmGame : MonoBehaviour
 	public float speed;
 	private float time;
 	public float score;
+	private float actual_score;
+	private float full_score;
 	private int combo;
 	private int length;
 	private int ptr;
@@ -21,12 +23,13 @@ public class RhythmGame : MonoBehaviour
 	private bool is_playing = false;
 	
 	private AudioManager AM;
+	private GameUIManager GUIM;
+	private ObjectPooler object_pooler;
+	
 	public Transform note_pool;
 	public Transform catcher;
 	public Transform black_fade;
 	private SpriteRenderer black_fade_sprite;
-	
-	private ObjectPooler object_pooler;
 	
 	void Awake(){
         //song = song_list[0];
@@ -41,6 +44,7 @@ public class RhythmGame : MonoBehaviour
     {
 		limit = -Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x - 0.5f;
 		AM = FindObjectOfType<AudioManager>();
+		GUIM = FindObjectOfType<GameUIManager>();
 		object_pooler = ObjectPooler.instance;
 		black_fade_sprite = black_fade.GetComponent<SpriteRenderer>();
     }
@@ -67,21 +71,30 @@ public class RhythmGame : MonoBehaviour
 					is_music_play = true;
 				}
 			}
-			
-			if (time > song_length)
+			if (time > song_length){
 				EndGame();
+			}
+			
+			GUIM.UpdateProgressBar(time > 0f ? time / song_length : 0f);
+			GUIM.UpdateScorePercentage(full_score == 0 ? 100 : actual_score / full_score * 100f);
+			GUIM.UpdateCombo(catcher.position + new Vector3(0, 1f, 0), combo);
+			
 			time += Time.deltaTime;
 		}
     }
 	
-	private void InitializeSong(string song_name){
+	public void StartSong(string song_name){
 		song = DataIO.LoadSongData(song_name);
 		speed = song.speed;
 		length = song.notes.Length;
-		time = -0.5f;
+		song_length = speed + 1f;
+		time = -1f;
 		score = 0;
+		full_score = 0;
+		actual_score = 0;
 		combo = 0;
 		ptr = 0;
+		is_playing = true;
 		
 		player.SetActive(true);
 	}
@@ -91,33 +104,75 @@ public class RhythmGame : MonoBehaviour
 	}
 	 
 	private void DropNote(Note note){
+		//print($"{limit}, {-limit + 2*limit*note.position/22}");
+		
 		GameObject new_note = object_pooler.SpawnFromPool(note.note_type, new Vector3(-limit + 2*limit*note.position/22,10,0),
 													Quaternion.identity, note_pool.transform);
 		new_note.GetComponent<DropNote>().clear = note.clear;
 	}
 	
-	public void CatchNote(bool success, int status){ // status: 0 for bad, 1 for good, 2 for excellent
-		if (success){
-			if (status == 0){
-				combo = 0;
-				score += 50;
-			}
-			else if (status == 1){
-				combo++;
-				score += combo * 10;
-				score += 150;
-			}
-			else if (status == 2){
-				combo++;
-				score += combo * 10;
-				score += 300;
-			}
-			else if (status == 3){
-				score += 50;
+	public void CatchNote(bool is_osu, bool success, int status){
+		// status: (is_osu == true)  0 for failed, 1 for bad, 2 for good, 3 for excellent
+		//         (is_osu == false) 1 for auxiliary, 2 for ornament, 3 for main
+		if (is_osu){
+			full_score += 300;
+			switch (status){
+				case 0:
+					combo = 0;
+					break;
+				case 1:
+					combo = 0;
+					score += 50;
+					actual_score += 50;
+					break;
+				case 2:
+					combo++;
+					score += combo * 10;
+					score += 150;
+					actual_score += 150;
+					break;
+				case 3:
+					combo++;
+					score += combo * 10;
+					score += 300;
+					actual_score += 300;
+					break;
+				default:
+					break;
 			}
 		}
 		else{
-			combo = 0;
+			if (!success)
+				combo = 0;
+			switch (status){
+				case 1:
+					full_score += 50;
+					if (success){
+						score += 50;
+						actual_score += 50;
+					}
+					break;
+				case 2:
+					full_score += 150;
+					if (success){
+						combo++;
+						score += combo * 10;
+						score += 150;
+						actual_score += 150;
+					}
+					break;
+				case 3:
+					full_score += 300;
+					if (success){
+						combo++;
+						score += combo * 10;
+						score += 300;
+						actual_score += 300;
+					}
+					break;
+				default:
+					break;
+			}
 		}
 		//print($"{combo}, {score}, {status}");
 	}
@@ -136,6 +191,7 @@ public class RhythmGame : MonoBehaviour
 	}
 	
 	private void EndGame(){
+		is_playing = false;
 		player.SetActive(false);
 		//print("END");
 	}

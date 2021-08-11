@@ -55,6 +55,7 @@ public class ObjectPooler : MonoBehaviour
 	}
 	
 	public void ToPool (GameObject object_to_pool, string tag){
+		//print(tag);
 		pool_dict[tag].Enqueue(object_to_pool);
 		object_to_pool.SetActive(false);
 	}

@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 	private float player_width;
 	private ImageManager IM;
 	
+	private float boundary_endurance = 0.2f;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -52,13 +54,13 @@ public class Player : MonoBehaviour
 	private void Move(){
 		Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		if (mouse_pos.y < origin.y + player_height * 1.8f){
-			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width*0.5f))
+			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width*boundary_endurance))
 				transform.position += new Vector3(mouse_pos.x - transform.position.x, 0, 0);
 			else{
 				if (mouse_pos.x < 0)
-					transform.position += new Vector3(origin.x + player_width*0.5f - transform.position.x, 0, 0);
+					transform.position += new Vector3(origin.x + player_width*boundary_endurance - transform.position.x, 0, 0);
 				else
-					transform.position += new Vector3(-origin.x - player_width*0.5f - transform.position.x, 0, 0);
+					transform.position += new Vector3(-origin.x - player_width*boundary_endurance - transform.position.x, 0, 0);
 			}
 		}
 	}

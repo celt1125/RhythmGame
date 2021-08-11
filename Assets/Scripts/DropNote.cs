@@ -36,13 +36,13 @@ public class DropNote : MonoBehaviour, IPooledObject
 		drop_height = -2 * Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 1.2f;
 		bottom = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y + 0.5f;
 		time = 0f;
+		speed = rhythm_game.speed;
 		SetType();
     }
 	
 	public void OnObjectSpawn(){
 		if (GetComponent<Rigidbody2D>() != null)
 			GetComponent<Rigidbody2D>().gravityScale = 0;
-		speed = rhythm_game.speed;
 		time = 0f;
 		osu_ring.gameObject.SetActive(true);
 		freeze = false;
@@ -82,9 +82,9 @@ public class DropNote : MonoBehaviour, IPooledObject
     }
 	
 	private void SetType(){
-		osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 		switch (transform.name){
 			case "main":
+				osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[0];
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				dropping = true;
@@ -93,6 +93,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				break;
 				
 			case "ornament":
+				osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[1];
 				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
 				dropping = true;
@@ -101,6 +102,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				break;
 				
 			case "auxiliary":
+				osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[2];
 				sprite_renderer.size = new Vector2(regular_size / 4f, regular_size / 4f);
 				dropping = true;
@@ -108,6 +110,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				break;
 				
 			case "osu":
+				osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[3];
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				sprite_renderer.sortingLayerName = "OsuNote";
@@ -119,7 +122,6 @@ public class DropNote : MonoBehaviour, IPooledObject
 				break;
 				
 			default:
-				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[0];
 				break;
 		}
 	}
@@ -130,8 +132,13 @@ public class DropNote : MonoBehaviour, IPooledObject
 			transform.position = new Vector3(transform.position.x, y_pos, 0);
 		else{
 			object_pooler.ToPool(gameObject, transform.name);
-			if (transform.name != "auxiliary")
-				rhythm_game.CatchNote(false, 0);
+			if (transform.name == "main")
+				rhythm_game.CatchNote(false, false, 3);
+			else if (transform.name == "ornament")
+				rhythm_game.CatchNote(false, false, 2);
+			else if (transform.name == "auxiliary")
+				rhythm_game.CatchNote(false, false, 1);
+			
 			if (clear)
 				rhythm_game.CleanCatcher();
 		}
@@ -145,7 +152,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 			osu_ring.GetComponent<SpriteRenderer>().size = new Vector2(regular_size * (1f + ratio), regular_size * (1f + ratio));
 		}
 		if (time > speed * 1.2f){
-			rhythm_game.CatchNote(false, 0);
+			rhythm_game.CatchNote(true, false, 0);
 			freeze = true;
 			circle_collider.enabled = false;
 			StartCoroutine(FadeOut(false, () => {object_pooler.ToPool(gameObject, transform.name);}));
@@ -156,18 +163,20 @@ public class DropNote : MonoBehaviour, IPooledObject
 		if (dropping){
 			if (other.gameObject.CompareTag("Catcher")){
 				if (transform.name == "auxiliary"){
-					rhythm_game.CatchNote(true, 3);
+					rhythm_game.CatchNote(false, true, 1);
 					object_pooler.ToPool(gameObject, transform.name);
 				}
+				else if (transform.name == "ornament"){
+					rhythm_game.CatchNote(false, true, 2);
+					PutOnCatcher();
+				}
 				else if (transform.name == "main"){
-					rhythm_game.CatchNote(true, 2);
+					rhythm_game.CatchNote(false, true, 3);
 					PutOnCatcher();
 					if (clear){
 						rhythm_game.CleanCatcher();
 					}
 				}
-				else if (transform.name == "ornament")
-					rhythm_game.CatchNote(true, 1);
 			}
 		}
 	}
@@ -177,19 +186,19 @@ public class DropNote : MonoBehaviour, IPooledObject
 			float ratio = AbsFloat((speed - time) / speed * 2f);
 			freeze = true;
 			if (ratio < 0.2f){
-				rhythm_game.CatchNote(true, 2);
+				rhythm_game.CatchNote(true, true, 3);
 				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
 			}
 			else if (ratio < 0.4f){
-				rhythm_game.CatchNote(true, 1);
+				rhythm_game.CatchNote(true, true, 2);
 				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
 			}
 			else if (ratio < 0.7f){
-				rhythm_game.CatchNote(true, 0);
-				StartCoroutine(FadeOut(false, () => {object_pooler.ToPool(gameObject, transform.name);}));
+				rhythm_game.CatchNote(true, true, 1);
+				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
 			}
 			else{
-				rhythm_game.CatchNote(false, 0);
+				rhythm_game.CatchNote(true, false, 0);
 				StartCoroutine(FadeOut(false, () => {object_pooler.ToPool(gameObject, transform.name);}));
 			}
 		}
@@ -219,7 +228,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 	}
 	
 	private IEnumerator FadeOut(bool success, System.Action callback = null){
-		//print(transform.Find("OsuRing") == null); 
+		//print(transform.Find("OsuRing") == null);
 		osu_ring.gameObject.SetActive(false);
 		if (transform.name == "osu"){ // time: speed / 4
 			float total_time = speed / 4f;

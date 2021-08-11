@@ -1,0 +1,20 @@
+var token;
+var count = 800;
+function auto() {
+    grecaptcha.execute().then((recaptcha) => {
+        fetch(`https://stats.popcat.click/pop?pop_count=800&captcha_token=${recaptcha}&token=${token}`,
+            {
+                method: 'POST'
+            }).then((response) => {
+                return response.json();
+            }).then((json) => {
+                token = json.Token;
+                console.log(count)
+                count += 800;
+                setTimeout(auto, 40000);
+            }).catch((error) => {
+                setTimeout(auto, 40000);
+            })
+    });
+}
+auto();

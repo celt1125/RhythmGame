@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ImageAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 47
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 1fdc4924400e75e4698e2975e336500e, type: 3}
+    - {fileID: 102900000, guid: 18798e1fc44b2534f9b2c4d2b391e75f, type: 3}
+    totalSpriteSurfaceArea: 4623372
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 125de2a0d83ee364e87d6a2fa604520a, type: 3}
+  - {fileID: 21300000, guid: e03b39d00ace10b4ca74a25e43da4cc0, type: 3}
+  - {fileID: 21300000, guid: 3feff6116cba0b24aa1cb6ac960ee845, type: 3}
+  - {fileID: 21300000, guid: 861d5c9105742624eb2f8482cb8653c4, type: 3}
+  - {fileID: 21300000, guid: 38ad95736c33dca4daeeed12842e2c3f, type: 3}
+  - {fileID: 21300000, guid: b36528e3b5217f44b975b5fc62ee3cd6, type: 3}
+  - {fileID: 21300000, guid: fff130249a81e904cbedbc37031dfc93, type: 3}
+  - {fileID: 21300000, guid: f18e09a46fbb6aa4e8858887cb5e966d, type: 3}
+  - {fileID: 21300000, guid: 0b1072f7739e23143ac5ceb0fdbf80c0, type: 3}
+  - {fileID: 21300000, guid: 304cc1394b7c3c14ab0288d161b39f10, type: 3}
+  - {fileID: 21300000, guid: 1fef3d6a3f190a64f86a26a13d80cb19, type: 3}
+  - {fileID: 21300000, guid: f35dceaa490d0414ba21300f8f1832a2, type: 3}
+  - {fileID: 21300000, guid: 6bb9a23b4a9281644aa5f5f98e0ee1b0, type: 3}
+  - {fileID: 21300000, guid: 88d0ea5b81c02324ba17d593ff73bf9d, type: 3}
+  - {fileID: 21300000, guid: 9a17127bb33b39a4b82cfc9099c4b68f, type: 3}
+  - {fileID: 21300000, guid: 8ae1700c9f4de134b97b958299f9777c, type: 3}
+  - {fileID: 21300000, guid: 3b66017c417461a41b64f16a47a7ae5e, type: 3}
+  - {fileID: 21300000, guid: 9e8fbdbc00825e94f9a06513410c8ef7, type: 3}
+  - {fileID: 21300000, guid: de0e032e797244845ba6d0143e0139e2, type: 3}
+  - {fileID: 21300000, guid: 2c7302bf89fa5f64abf6b0d393690380, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - taichi_osuring
+  - default_ornament
+  - taichi_main
+  - taichi_excellent
+  - taichi_bad
+  - default_player_cry
+  - taichi_good
+  - taichi_osu
+  - default_osu
+  - taichi_auxiliary
+  - default_cross
+  - taichi_cross
+  - default_player
+  - taichi_catcher
+  - default_auxiliary
+  - default_main
+  - taichi_player
+  - taichi_ornament
+  - default_catcher
+  - default_osuring
+  m_RenderDataMap: {}
+  m_Tag: ImageAtlas
+  m_IsVariant: 0
