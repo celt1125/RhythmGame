@@ -75,8 +75,8 @@ public class SongMenuManager : MonoBehaviour
 			SongProperties song_properties = new SongProperties() {button=new_song_button,
 																   name=song_name,
 																   difficulty=0,
-																   best_score=0,
-																   rank="N"};
+																   best_score=PlayerPrefs.GetInt(song_name + "bestscore"),
+																   rank=PlayerPrefs.GetInt(song_name + "rank")};
 			song_properties_list.Add(song_properties);
 			pos ++;
 		}
@@ -178,10 +178,14 @@ public class SongMenuManager : MonoBehaviour
 	}
 	
 	public void PlaySong(){
-		rhythm_game.StartSong(selected_song_name);
 		song_menu_panel.SetActive(false);
 		play_panel.SetActive(false);
 		game_panel.SetActive(true);
+		rhythm_game.StartSong(selected_song_name);
+	}
+	
+	public void ShowSongMenu(){
+		song_menu_panel.SetActive(true);
 	}
 	
 	private int Ratio2Position(float x){
@@ -261,7 +265,7 @@ public class SongProperties{
 	public string name;
 	public int difficulty;
 	public int best_score;
-	public string rank;
+	public int rank;
 	
 	public void Assign(SongProperties other){
 		this.name = other.name;
@@ -281,9 +285,9 @@ public class SongProperties{
 		this.best_score ^= other.best_score;
 		this.best_score ^= other.best_score ^= this.best_score;
 		
-		string tmp_rank = this.rank;
+		int tmp_rank = this.rank;
 		this.rank = other.rank;
-		other.rank = tmp_name;
+		other.rank = tmp_rank;
 	}
 	
 	public void Print(){

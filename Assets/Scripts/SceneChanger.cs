@@ -9,18 +9,6 @@ public class SceneChanger : MonoBehaviour
 	
 	private int next_scene_idx;
 	
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-	
 	public void FadeToScene (int idx){
 		next_scene_idx = idx;
 		animator.SetTrigger("fade_out");

@@ -26,10 +26,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (Input.GetMouseButtonDown(0))
-			Move();
-		if (Input.GetMouseButton(0))
-			Move();
+		if (Time.timeScale > 0.5){
+			if (Input.GetMouseButtonDown(0))
+				Move();
+			if (Input.GetMouseButton(0))
+				Move();
+		}
 		/*
 		RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 		if (hit.collider.CompareTag("Player"))
@@ -54,13 +56,13 @@ public class Player : MonoBehaviour
 	private void Move(){
 		Vector3 mouse_pos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		if (mouse_pos.y < origin.y + player_height * 1.8f){
-			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width*boundary_endurance))
+			if (AbsFloat(mouse_pos.x) < AbsFloat(origin.x + player_width * boundary_endurance))
 				transform.position += new Vector3(mouse_pos.x - transform.position.x, 0, 0);
 			else{
 				if (mouse_pos.x < 0)
-					transform.position += new Vector3(origin.x + player_width*boundary_endurance - transform.position.x, 0, 0);
+					transform.position += new Vector3(origin.x + player_width * boundary_endurance - transform.position.x, 0, 0);
 				else
-					transform.position += new Vector3(-origin.x - player_width*boundary_endurance - transform.position.x, 0, 0);
+					transform.position += new Vector3(-origin.x - player_width * boundary_endurance - transform.position.x, 0, 0);
 			}
 		}
 	}

@@ -7,13 +7,14 @@ public class RhythmGame : MonoBehaviour
 	public GameObject note_prefab;
 	public GameObject player;
 	
-	private Song song;
+	public Song song;
 	public float speed;
 	private float time;
-	public float score;
-	private float actual_score;
-	private float full_score;
+	public int score;
+	private int actual_score;
+	private int full_score;
 	private int combo;
+	private int max_combo;
 	private int length;
 	private int ptr;
 	private float limit;
@@ -28,8 +29,7 @@ public class RhythmGame : MonoBehaviour
 	
 	public Transform note_pool;
 	public Transform catcher;
-	public Transform black_fade;
-	private SpriteRenderer black_fade_sprite;
+	public SpriteRenderer black_fade_sprite;
 	
 	void Awake(){
         //song = song_list[0];
@@ -46,7 +46,6 @@ public class RhythmGame : MonoBehaviour
 		AM = FindObjectOfType<AudioManager>();
 		GUIM = FindObjectOfType<GameUIManager>();
 		object_pooler = ObjectPooler.instance;
-		black_fade_sprite = black_fade.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,7 +53,7 @@ public class RhythmGame : MonoBehaviour
     {
 		if (is_playing){
 			if (time <= 0.1f)
-				PrepareForGame();
+				black_fade_sprite.color = new Color(0, 0, 0, time < 0 ? time + 1f : 1f);
 			
 			while (ptr < length){
 				if (song.notes[ptr].timing - time < Time.deltaTime){
@@ -71,13 +70,14 @@ public class RhythmGame : MonoBehaviour
 					is_music_play = true;
 				}
 			}
-			if (time > song_length){
-				EndGame();
-			}
-			
-			GUIM.UpdateProgressBar(time > 0f ? time / song_length : 0f);
-			GUIM.UpdateScorePercentage(full_score == 0 ? 100 : actual_score / full_score * 100f);
+			if (ptr >= length)
+				if (time - speed > song_length - 2f)
+					EndGame(true);
+			print($"{time}, {song_length}");
+			GUIM.UpdateProgressBar(time > speed ? (time - speed) / song_length : 0f);
+			GUIM.UpdateAccuracy(full_score == 0 ? 100 : (float)actual_score / full_score * 100f);
 			GUIM.UpdateCombo(catcher.position + new Vector3(0, 1f, 0), combo);
+			max_combo = combo > max_combo ? combo : max_combo;
 			
 			time += Time.deltaTime;
 		}
@@ -90,22 +90,36 @@ public class RhythmGame : MonoBehaviour
 		song_length = speed + 1f;
 		time = -1f;
 		score = 0;
+		max_combo = 0;
 		full_score = 0;
 		actual_score = 0;
 		combo = 0;
 		ptr = 0;
 		is_playing = true;
+		is_music_play = false;
 		
+		ClearAllNotes();
 		player.SetActive(true);
 	}
 	
-	private void PrepareForGame(){
-		black_fade_sprite.color = new Color(0, 0, 0, time < 0 ? time + 1f : 1f);
+	public void InitializeSong(){
+		time = -1f;
+		score = 0;
+		full_score = 0;
+		actual_score = 0;
+		combo = 0;
+		max_combo = 0;
+		ptr = 0;
+		is_playing = true;
+		AM.Stop(song.name);
+		is_music_play = false;
+		
+		ClearAllNotes();
+		player.SetActive(true);
 	}
 	 
 	private void DropNote(Note note){
 		//print($"{limit}, {-limit + 2*limit*note.position/22}");
-		
 		GameObject new_note = object_pooler.SpawnFromPool(note.note_type, new Vector3(-limit + 2*limit*note.position/22,10,0),
 													Quaternion.identity, note_pool.transform);
 		new_note.GetComponent<DropNote>().clear = note.clear;
@@ -186,13 +200,30 @@ public class RhythmGame : MonoBehaviour
 		List<Transform> clean_list = new List<Transform>();
 		foreach(Transform child in catcher)
 			clean_list.Add(child);
-		foreach(Transform child in clean_list)
+		foreach(Transform child in clean_list){
+			child.parent = note_pool.transform;
 			child.GetComponent<DropNote>().CleanOut();
+		}
 	}
 	
-	private void EndGame(){
+	public void ClearAllNotes(){
+		foreach(Transform child in note_pool.transform){
+			if (child.gameObject.activeSelf == true)
+				object_pooler.ToPool(child.gameObject, child.name);
+		}
+		
+		List<Transform> clean_list = new List<Transform>();
+		foreach(Transform child in catcher)
+			clean_list.Add(child);
+		foreach(Transform child in clean_list){
+			child.parent = note_pool.transform;
+			object_pooler.ToPool(child.gameObject, child.name);
+		}
+	}
+	
+	public void EndGame(bool show_score){
 		is_playing = false;
-		player.SetActive(false);
-		//print("END");
+		if (show_score)
+			GUIM.ShowScoreboard(song.name, score, max_combo, full_score == 0 ? 0f : (float)actual_score / full_score * 100f);
 	}
 }

@@ -26,4 +26,22 @@ public class AudioManager : MonoBehaviour
 		s.source.Play();
 		return s.source.clip.length;
 	}
+	
+	public void Pause (string name){
+		Sound s = Array.Find(sounds, sound => sound.name == name);
+		if (s == null){
+			print("no such song");
+			return;
+		}
+		s.source.Pause();
+	}
+	
+	public void Stop (string name){
+		Sound s = Array.Find(sounds, sound => sound.name == name);
+		if (s == null){
+			print("no such song");
+			return;
+		}
+		s.source.Stop();
+	}
 }

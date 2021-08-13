@@ -16,7 +16,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 	private bool is_osu = false;
 	public bool freeze = false;
 	public bool clear = false;
-	private float regular_size = 2.56f;
+	private float regular_size = 1f;
 	
 	private RhythmGame rhythm_game;
 	private ImageManager IM;
@@ -53,9 +53,14 @@ public class DropNote : MonoBehaviour, IPooledObject
 		switch (transform.name){
 			case "main":
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
-				GetComponent<Rigidbody2D>().AddTorque(Random.Range(50.0f, 100.0f));
+				GetComponent<Rigidbody2D>().AddTorque(Random.Range(100.0f, 150.0f));
 				break;
-				
+			
+			case "ornament":
+				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
+				GetComponent<Rigidbody2D>().AddTorque(Random.Range(150.0f, 200.0f));
+				break;
+			
 			case "osu":
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[3];
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
@@ -188,18 +193,20 @@ public class DropNote : MonoBehaviour, IPooledObject
 			if (ratio < 0.2f){
 				rhythm_game.CatchNote(true, true, 3);
 				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
+				GameObject score = object_pooler.SpawnFromPool("excellent", transform.position, Quaternion.identity);
+				score.GetComponent<Score>().speed = speed;
 			}
-			else if (ratio < 0.4f){
+			else if (ratio < 0.5f){
 				rhythm_game.CatchNote(true, true, 2);
 				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
-			}
-			else if (ratio < 0.7f){
-				rhythm_game.CatchNote(true, true, 1);
-				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
+				GameObject score = object_pooler.SpawnFromPool("good", transform.position, Quaternion.identity);
+				score.GetComponent<Score>().speed = speed;
 			}
 			else{
-				rhythm_game.CatchNote(true, false, 0);
-				StartCoroutine(FadeOut(false, () => {object_pooler.ToPool(gameObject, transform.name);}));
+				rhythm_game.CatchNote(true, true, 1);
+				StartCoroutine(FadeOut(true, () => {object_pooler.ToPool(gameObject, transform.name);}));
+				GameObject score = object_pooler.SpawnFromPool("bad", transform.position, Quaternion.identity);
+				score.GetComponent<Score>().speed = speed;
 			}
 		}
 	}
@@ -213,14 +220,13 @@ public class DropNote : MonoBehaviour, IPooledObject
 		transform.position = new Vector3(transform.position.x, catcher.position.y + 0.15f, 0);
 		transform.parent = catcher;
 		circle_collider.enabled = false;
-		sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
+		sprite_renderer.size = new Vector2(sprite_renderer.size.x * 0.5f, sprite_renderer.size.y * 0.5f);
 	}
 	
 	public void CleanOut(){
 		// StartRoutine(FadeOut())
 		// increase jumping height
 		freeze = true;
-		transform.parent = null;
 		GetComponent<Rigidbody2D>().gravityScale = 1;
 		float horizontal_force = transform.position.x - catcher.position.x;
 		GetComponent<Rigidbody2D>().AddForce(new Vector2 (horizontal_force, 2.5f), ForceMode2D.Impulse);
@@ -231,7 +237,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 		//print(transform.Find("OsuRing") == null);
 		osu_ring.gameObject.SetActive(false);
 		if (transform.name == "osu"){ // time: speed / 4
-			float total_time = speed / 4f;
+			float total_time = speed * 0.25f;
 			if (success){
 				for (float ratio = 0.25f; ratio > 0f; ratio -= Time.deltaTime * 0.25f / total_time){
 					sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, 0.5f + ratio * 2f);
@@ -258,7 +264,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 			}
 		}
 		else{ // time: speed / 2
-			float total_time = speed / 2f;
+			float total_time = speed * 0.5f;
 			for (float ratio = 1f; ratio > 0f; ratio -= Time.deltaTime / total_time){
 				sprite_renderer.color = new Color(sprite_renderer.color.r, sprite_renderer.color.g, sprite_renderer.color.b, ratio);
 				yield return null;

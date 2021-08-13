@@ -47,7 +47,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 2
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -57,51 +57,70 @@ SpriteAtlas:
     packables:
     - {fileID: 102900000, guid: 1fdc4924400e75e4698e2975e336500e, type: 3}
     - {fileID: 102900000, guid: 18798e1fc44b2534f9b2c4d2b391e75f, type: 3}
-    totalSpriteSurfaceArea: 4623372
+    - {fileID: 102900000, guid: c22304d3d5873a447bec61bd6b0b6da5, type: 3}
+    totalSpriteSurfaceArea: 4823791
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
+  - {fileID: 21300000, guid: 003a31a09b126e4419d5813b20755ac0, type: 3}
   - {fileID: 21300000, guid: 125de2a0d83ee364e87d6a2fa604520a, type: 3}
   - {fileID: 21300000, guid: e03b39d00ace10b4ca74a25e43da4cc0, type: 3}
   - {fileID: 21300000, guid: 3feff6116cba0b24aa1cb6ac960ee845, type: 3}
-  - {fileID: 21300000, guid: 861d5c9105742624eb2f8482cb8653c4, type: 3}
-  - {fileID: 21300000, guid: 38ad95736c33dca4daeeed12842e2c3f, type: 3}
+  - {fileID: 21300000, guid: 36d80bb27c2768a44a887d0963d184bc, type: 3}
   - {fileID: 21300000, guid: b36528e3b5217f44b975b5fc62ee3cd6, type: 3}
-  - {fileID: 21300000, guid: fff130249a81e904cbedbc37031dfc93, type: 3}
+  - {fileID: 21300000, guid: 970ccf74d4b21ad4aab33160050f526d, type: 3}
   - {fileID: 21300000, guid: f18e09a46fbb6aa4e8858887cb5e966d, type: 3}
+  - {fileID: 21300000, guid: 81bf314602634404e93382edf9bd48aa, type: 3}
+  - {fileID: 21300000, guid: 09af566759a7386439c2b813d383822b, type: 3}
+  - {fileID: 21300000, guid: 509113e762f93c0418d5cbaf93de46c7, type: 3}
   - {fileID: 21300000, guid: 0b1072f7739e23143ac5ceb0fdbf80c0, type: 3}
   - {fileID: 21300000, guid: 304cc1394b7c3c14ab0288d161b39f10, type: 3}
+  - {fileID: 21300000, guid: 899590b9666f12e4eaa93f7fbcc10096, type: 3}
+  - {fileID: 21300000, guid: 1514afb982934044bac75bca3b781fc4, type: 3}
   - {fileID: 21300000, guid: 1fef3d6a3f190a64f86a26a13d80cb19, type: 3}
   - {fileID: 21300000, guid: f35dceaa490d0414ba21300f8f1832a2, type: 3}
+  - {fileID: 21300000, guid: 58b6b9ea15a2b1e468e9771094deb5fc, type: 3}
   - {fileID: 21300000, guid: 6bb9a23b4a9281644aa5f5f98e0ee1b0, type: 3}
   - {fileID: 21300000, guid: 88d0ea5b81c02324ba17d593ff73bf9d, type: 3}
   - {fileID: 21300000, guid: 9a17127bb33b39a4b82cfc9099c4b68f, type: 3}
   - {fileID: 21300000, guid: 8ae1700c9f4de134b97b958299f9777c, type: 3}
+  - {fileID: 21300000, guid: 4fe8c43cb735dc24ba5d25d553bea723, type: 3}
+  - {fileID: 21300000, guid: b740d45cdf3e4a3498f7fcd6fded16b5, type: 3}
   - {fileID: 21300000, guid: 3b66017c417461a41b64f16a47a7ae5e, type: 3}
   - {fileID: 21300000, guid: 9e8fbdbc00825e94f9a06513410c8ef7, type: 3}
+  - {fileID: 21300000, guid: 1db5bc7d8dac6904a82801572b505b7b, type: 3}
   - {fileID: 21300000, guid: de0e032e797244845ba6d0143e0139e2, type: 3}
   - {fileID: 21300000, guid: 2c7302bf89fa5f64abf6b0d393690380, type: 3}
   m_PackedSpriteNamesToIndex:
+  - default_excellent
   - taichi_osuring
   - default_ornament
   - taichi_main
-  - taichi_excellent
-  - taichi_bad
+  - C
   - default_player_cry
-  - taichi_good
+  - default_bad
   - taichi_osu
+  - SS
+  - default_good
+  - B
   - default_osu
   - taichi_auxiliary
+  - default_good1
+  - default_excellent1
   - default_cross
   - taichi_cross
+  - A
   - default_player
   - taichi_catcher
   - default_auxiliary
   - default_main
+  - D
+  - default_bad1
   - taichi_player
   - taichi_ornament
+  - S
   - default_catcher
   - default_osuring
   m_RenderDataMap: {}
