@@ -1,6 +1,8 @@
 {
    "name": "Little Star",
    "speed": 1.55,
+   "difficulty": 1,
+   "BPM": 120,
    "notes": [{
          "note_type": "osu",
          "timing": 0.02993197,

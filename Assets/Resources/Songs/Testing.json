@@ -1,6 +1,8 @@
 {
    "name": "Testing",
    "speed": 1.55,
+   "difficulty": 4,
+   "BPM": 120,
    "notes": [{
          "note_type": "osu",
          "timing": 2.01542,

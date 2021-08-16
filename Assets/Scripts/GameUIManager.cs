@@ -25,8 +25,7 @@ public class GameUIManager : MonoBehaviour
 	public TMP_Text accuracy_text;
 	public Transform rank_img;
 	
-	
-	
+	private string current_song_name;
 	private Vector2 move_pos;
 	
 	private RhythmGame rhythm_game;
@@ -77,6 +76,7 @@ public class GameUIManager : MonoBehaviour
 	}
 	
 	public void ShowScoreboard(string song_name, int score, int max_combo, float accuracy){
+		current_song_name = song_name;
 		ResetScoreboard();
 		StartCoroutine(FadeIn(() => {
 			game_panel.SetActive(false);
@@ -107,6 +107,7 @@ public class GameUIManager : MonoBehaviour
 			for (float time = 0f; time < 0.5f; time += Time.deltaTime)
 				new_record_text.fontSize = 36 - 24 * time;
 			PlayerPrefs.SetInt(song_name + "bestscore", score);
+			PlayerPrefs.SetFloat(song_name + "accuracy", accuracy);
 			is_best_score = true;
 		}
 		
@@ -182,6 +183,7 @@ public class GameUIManager : MonoBehaviour
 	}
 	
 	public void ScoreboardToMenu(){
+		SMM.UpdateSongStatus(current_song_name);
 		StartCoroutine(FadeOut(() => {
 			score_board.SetActive(false);
 			rhythm_game.black_fade_sprite.color = new Color(0, 0, 0, 0);

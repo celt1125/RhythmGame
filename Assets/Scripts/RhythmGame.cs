@@ -26,6 +26,7 @@ public class RhythmGame : MonoBehaviour
 	private AudioManager AM;
 	private GameUIManager GUIM;
 	private ObjectPooler object_pooler;
+	private SongData song_data;
 	
 	public Transform note_pool;
 	public Transform catcher;
@@ -46,6 +47,7 @@ public class RhythmGame : MonoBehaviour
 		AM = FindObjectOfType<AudioManager>();
 		GUIM = FindObjectOfType<GameUIManager>();
 		object_pooler = ObjectPooler.instance;
+		song_data = FindObjectOfType<SongData>();
     }
 
     // Update is called once per frame
@@ -73,7 +75,7 @@ public class RhythmGame : MonoBehaviour
 			if (ptr >= length)
 				if (time - speed > song_length - 2f)
 					EndGame(true);
-			print($"{time}, {song_length}");
+			
 			GUIM.UpdateProgressBar(time > speed ? (time - speed) / song_length : 0f);
 			GUIM.UpdateAccuracy(full_score == 0 ? 100 : (float)actual_score / full_score * 100f);
 			GUIM.UpdateCombo(catcher.position + new Vector3(0, 1f, 0), combo);
@@ -84,7 +86,7 @@ public class RhythmGame : MonoBehaviour
     }
 	
 	public void StartSong(string song_name){
-		song = DataIO.LoadSongData(song_name);
+		song = song_data.LoadSong(song_name);
 		speed = song.speed;
 		length = song.notes.Length;
 		song_length = speed + 1f;

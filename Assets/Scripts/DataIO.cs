@@ -20,6 +20,12 @@ public class DataIO : MonoBehaviour
 		}
 	}
 	
+	public static List<string> LoadSongList(){
+		TextAsset json = Resources.Load<TextAsset>("SongList");
+		SongList song_list = JsonUtility.FromJson<SongList>(json.text);
+		return song_list.song_list;
+	}
+	
 	public void WriteSongData(Song song, string file_name){
 		string tmp_path = Path.Combine(Application.persistentDataPath, file_name + ".json");
 		print(tmp_path);
@@ -28,4 +34,9 @@ public class DataIO : MonoBehaviour
 			stream.Write(json);
 		}
 	}
+}
+
+[System.Serializable]
+public class SongList{
+	public List<string> song_list;
 }

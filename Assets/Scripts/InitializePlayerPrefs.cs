@@ -4,27 +4,23 @@ using UnityEngine;
 
 public class InitializePlayerPrefs : MonoBehaviour
 {
-	
-    public List<SongDifficulty> song_list;
+	private List<string> song_list;
 	
     void Start()
     {
-		print(PlayerPrefs.GetInt("is_initialized", 0));
+		song_list = DataIO.LoadSongList();
+		//print(PlayerPrefs.GetInt("is_initialized", 0));
+		foreach (string song in song_list){
+			if (PlayerPrefs.GetInt(song + "_initialized", 0) == 0){
+				PlayerPrefs.SetInt(song + "_initialized", 1);
+				PlayerPrefs.SetInt(song + "bestscore", 0);
+				PlayerPrefs.SetInt(song + "accuracy", 0);
+				PlayerPrefs.SetInt(song + "rank", -1);
+			}
+		}
 		if (PlayerPrefs.GetInt("is_initialized", 0) == 0){
 			PlayerPrefs.SetInt("is_initialized", 1);
-			foreach (SongDifficulty song in song_list){
-				PlayerPrefs.SetInt(song.song_name + "bestscore", 0);
-				PlayerPrefs.SetInt(song.song_name + "rank", -1);
-				PlayerPrefs.SetInt(song.song_name + "difficulty", song.difficulty);
-			}
 			PlayerPrefs.SetInt("skin", 1);
 		}
-        
     }
-}
-
-[System.Serializable]
-public class SongDifficulty{
-	public string song_name;
-	public int difficulty;
 }

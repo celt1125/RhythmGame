@@ -1,6 +1,8 @@
 {
    "name": "River Flows In You",
    "speed": 1.25,
+   "difficulty": 2,
+   "BPM": 140,
    "notes": [{
          "note_type": "osu",
          "timing": 0.5138322,

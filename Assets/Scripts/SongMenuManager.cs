@@ -13,11 +13,15 @@ public class SongMenuManager : MonoBehaviour
 	public GameObject play_panel;
 	public GameObject game_panel;
 	public Button[] sorting_buttons;
+	public TMP_Text song_name_text;
+	public TMP_Text best_score_text;
+	public TMP_Text accuracy_text;
+	public Image rank_img;
 	public Transform scroll;
-	public List<string> song_list; // default: sort by name
+	private List<string> song_list; // default: sort by name
 	private ScrollRect scroll_rect;
 	
-	private int h = 150;
+	private int h = 100;
 	private int w = 400;
 	private int enlargement_h = 100;
 	private int enlargement_w = 100;
@@ -26,15 +30,24 @@ public class SongMenuManager : MonoBehaviour
 	private float space_ratio;
 	private string sorting_state = "name";
 	private string selected_song_name;
+	private string current_song;
+	private string previous_song;
 	private bool is_ascending = true;
+	private bool is_sorting = false;
 	private List<SongProperties> song_properties_list = new List<SongProperties>();
 	
 	private AudioManager AM;
+	private ImageManager IM;
 	private RhythmGame rhythm_game;
+	private SongData song_data;
 	
 	void Start(){
+		song_list = DataIO.LoadSongList();
+		
 		AM = FindObjectOfType<AudioManager>();
+		IM = FindObjectOfType<ImageManager>();
 		rhythm_game = FindObjectOfType<RhythmGame>();
+		song_data = FindObjectOfType<SongData>();
 		
 		SetScroll();
 		InitializeSongMenu();
@@ -53,10 +66,15 @@ public class SongMenuManager : MonoBehaviour
 		foreach(string song_name in song_list){
 			GameObject new_song_button = Instantiate(song_button, new Vector3(0,0,0), Quaternion.identity);
 			new_song_button.transform.SetParent(scroll);
-			new_song_button.transform.Find("SongName").GetComponent<TMP_Text>().text = song_name;
+			new_song_button.transform.Find("SongName").GetComponent<TMP_Text>().text = "   " + song_name;
+			new_song_button.transform.Find("SongName").GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, h);
+			new_song_button.transform.Find("Status").GetComponent<RectTransform>().
+											SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, h, enlargement_h);
 			new_song_button.transform.name = song_name;
 			//new_song_button.GetComponent<Button>().onClick.AddListener(delegate{ PlaySong(song_name); });
 			new_song_button.GetComponent<Button>().onClick.AddListener(OnSongClick);
+			
+			Song s = song_data.LoadSong(song_name);
 			
 			RectTransform rect_transform = new_song_button.GetComponent<RectTransform>();
 			if (pos < enlarge_pos){
@@ -66,17 +84,54 @@ public class SongMenuManager : MonoBehaviour
 			else if (pos == enlarge_pos){
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, space + pos * h, h + enlargement_h);
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, w + enlargement_w);
+				current_song = song_name;
+				AM.Play(current_song);
+				
+				new_song_button.transform.Find("Status").GetComponent<TMP_Text>().text = $"    Difficulty: {s.difficulty}    BPM: {s.BPM}";
+				song_name_text.text = song_name;
+				best_score_text.text = PlayerPrefs.GetInt(song_name + "bestscore").ToString();
+				accuracy_text.text = PlayerPrefs.GetFloat(song_name + "accuracy").ToString("F1") + "%";
+				if (PlayerPrefs.GetInt(song_name + "rank") != -1){
+					rank_img.color = new Color(1, 1, 1, 1);
+					rank_img.sprite = IM.rank_image.image[PlayerPrefs.GetInt(song_name + "rank")];
+				}
+				else
+					rank_img.color = new Color(1, 1, 1, 0);
 			}
 			else{
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, space + enlargement_h + pos * h, h);
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, w);
 			}
 			
-			SongProperties song_properties = new SongProperties() {button=new_song_button,
-																   name=song_name,
-																   difficulty=0,
-																   best_score=PlayerPrefs.GetInt(song_name + "bestscore"),
-																   rank=PlayerPrefs.GetInt(song_name + "rank")};
+			SongProperties song_properties = new SongProperties() {button = new_song_button,
+																   name = song_name,
+																   difficulty = s.difficulty,
+																   BPM = s.BPM,
+																   best_score = PlayerPrefs.GetInt(song_name + "bestscore"),
+																   accuracy = PlayerPrefs.GetFloat(song_name + "accuracy"),
+																   rank = PlayerPrefs.GetInt(song_name + "rank")};
+			
+			
+			Transform rank_transform = new_song_button.transform.Find("Rank");
+			
+			if (song_properties.rank != -1){
+				Rect rank_rect = IM.rank_image.image[song_properties.rank].rect;
+				rank_transform.GetComponent<Image>().sprite = IM.rank_image.image[song_properties.rank];
+				rank_transform.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+				if (pos == enlarge_pos){
+					rank_transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + enlargement_w + 20, 0);
+					rank_transform.GetComponent<RectTransform>().sizeDelta = 
+											new Vector2(rank_rect.width * (h + enlargement_h) * 0.6f / rank_rect.height, (h + enlargement_h) * 0.6f);
+				}
+				else{
+					rank_transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + 20, 0);
+					rank_transform.GetComponent<RectTransform>().sizeDelta = 
+											new Vector2(rank_rect.width * h * 0.6f / rank_rect.height, h * 0.6f);
+				}
+			}
+			else
+				rank_transform.GetComponent<Image>().color = new Color(1, 1, 1, 0);
+			
 			song_properties_list.Add(song_properties);
 			pos ++;
 		}
@@ -87,12 +142,94 @@ public class SongMenuManager : MonoBehaviour
 		int enlarge_pos = song_list.Count >> 1;
 		foreach(string song_name in song_list){
 			GameObject tmp_song_button = song_properties_list[pos].button;
-			tmp_song_button.transform.Find("SongName").GetComponent<TMP_Text>().text = song_name;
+			tmp_song_button.transform.Find("SongName").GetComponent<TMP_Text>().text = "   " + song_name;
 			tmp_song_button.transform.name = song_name;
 			//new_song_button.GetComponent<Button>().onClick.AddListener(delegate{ PlaySong(song_name); });
 			
 			pos ++;
 		}
+	}
+	
+	private void UpdateSongRank(){
+		foreach (var s in song_properties_list){
+			if (s.rank != -1){
+				Transform rank_transform = s.button.transform.Find("Rank");
+				rank_transform.GetComponent<Image>().sprite = IM.rank_image.image[PlayerPrefs.GetInt(s.name + "rank")];
+				rank_transform.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+				Rect rank_rect = rank_transform.GetComponent<Image>().sprite.rect;
+				
+				if (s.name == current_song){
+					rank_transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + enlargement_w + 20, 0);
+					rank_transform.GetComponent<RectTransform>().sizeDelta =
+									new Vector2(rank_rect.width * (h + enlargement_w) * 0.6f / rank_rect.height, (h + enlargement_w) * 0.6f);
+				}
+				else{
+					rank_transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + 20, 0);
+					rank_transform.GetComponent<RectTransform>().sizeDelta =
+									new Vector2(rank_rect.width * h * 0.6f / rank_rect.height, h * 0.6f);
+				}
+			}
+			else
+				s.button.transform.Find("Rank").GetComponent<Image>().color = new Color(1, 1, 1, 0);
+		}
+	}
+	
+	public void UpdateSongStatus(string song_name){
+		int pos = song_list.FindIndex(s => s == song_name);
+		best_score_text.text = PlayerPrefs.GetInt(song_name + "bestscore").ToString();
+		accuracy_text.text = PlayerPrefs.GetFloat(song_name + "accuracy").ToString("F1") + "%";
+		rank_img.color = new Color(1, 1, 1, 1);
+		rank_img.sprite = IM.rank_image.image[PlayerPrefs.GetInt(song_name + "rank")];
+		
+		Transform rank_transform = song_properties_list[pos].button.transform.Find("Rank");
+		rank_transform.GetComponent<Image>().sprite = IM.rank_image.image[PlayerPrefs.GetInt(song_name + "rank")];
+		rank_transform.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+		Rect rank_rect = rank_transform.GetComponent<Image>().sprite.rect;
+		rank_transform.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + enlargement_w + 20, 0);
+		rank_transform.GetComponent<RectTransform>().sizeDelta =
+						new Vector2(rank_rect.width * (h + enlargement_h) * 0.6f / rank_rect.height, (h + enlargement_h) * 0.6f);
+	}
+	
+	private void OnSongChanged(){
+		if (!is_sorting){
+			AM.Stop(previous_song);
+			AM.Play(current_song);
+		}
+		SongProperties s_previous = song_properties_list.Find(s => s.name == previous_song);
+		s_previous.button.transform.Find("Status").GetComponent<TMP_Text>().text = "";
+		if (s_previous.rank != -1){
+			Transform rank_transform1 = s_previous.button.transform.Find("Rank");
+			//rank_transform1.GetComponent<Image>().sprite = IM.rank_image.image[PlayerPrefs.GetInt(previous_song + "rank")];
+			//rank_transform1.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+			Rect rank_rect1 = rank_transform1.GetComponent<Image>().sprite.rect;
+			rank_transform1.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + 20, 0);
+			rank_transform1.GetComponent<RectTransform>().sizeDelta =
+							new Vector2(rank_rect1.width * h * 0.6f / rank_rect1.height, h * 0.6f);
+		}
+		else
+			s_previous.button.transform.Find("Rank").GetComponent<Image>().color = new Color(1, 1, 1, 0);
+		
+		SongProperties s_current = song_properties_list.Find(s => s.name == current_song);
+		s_current.button.transform.Find("Status").GetComponent<TMP_Text>().text = $"    Difficulty: {s_current.difficulty}    BPM: {s_current.BPM}";
+		if (s_current.rank != -1){
+			rank_img.color = new Color(1, 1, 1, 1);
+			rank_img.sprite = IM.rank_image.image[PlayerPrefs.GetInt(current_song + "rank")];
+			Transform rank_transform2 = s_current.button.transform.Find("Rank");
+			//rank_transform2.GetComponent<Image>().sprite = IM.rank_image.image[PlayerPrefs.GetInt(current_song + "rank")];
+			//rank_transform2.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+			Rect rank_rect2 = rank_transform2.GetComponent<Image>().sprite.rect;
+			rank_transform2.GetComponent<RectTransform>().SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, w + enlargement_w + 20, 0);
+			rank_transform2.GetComponent<RectTransform>().sizeDelta =
+							new Vector2(rank_rect2.width * (h + enlargement_h) * 0.6f / rank_rect2.height, (h + enlargement_h) * 0.6f);
+		}
+		else{
+			rank_img.color = new Color(1, 1, 1, 0);
+			s_current.button.transform.Find("Rank").GetComponent<Image>().color = new Color(1, 1, 1, 0);
+		}
+		
+		song_name_text.text = current_song;
+		best_score_text.text = PlayerPrefs.GetInt(current_song + "bestscore").ToString();
+		accuracy_text.text = PlayerPrefs.GetFloat(current_song + "accuracy").ToString("F1") + "%";
 	}
 	
 	public void UpdateSongMenuPosition(Vector2 position){
@@ -107,6 +244,10 @@ public class SongMenuManager : MonoBehaviour
 			else if (i == pos){
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, space + i * h, h + enlargement_h);
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Right, 0, w + enlargement_w);
+				previous_song = current_song;
+				current_song = song_list[i];
+				if (previous_song != current_song)
+					OnSongChanged();
 			}
 			else{
 				rect_transform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, space + enlargement_h + i * h, h);
@@ -131,13 +272,18 @@ public class SongMenuManager : MonoBehaviour
 	
 	public void SortSongMenu(string type){
 		//Shuffle(song_list);
+		is_sorting = true;
+		AM.Stop(current_song);
 		foreach (Button button in sorting_buttons)
 			button.interactable = false;
 		Sort(type);
 		UpdateSongMenu();
+		UpdateSongRank();
 		StartCoroutine(ScrollUp( () => {
 			foreach (Button button in sorting_buttons)
 				button.interactable = true;
+			is_sorting = false;
+			AM.Play(current_song);
 		}));
 	}
 	
@@ -178,6 +324,7 @@ public class SongMenuManager : MonoBehaviour
 	}
 	
 	public void PlaySong(){
+		AM.Stop(current_song);
 		song_menu_panel.SetActive(false);
 		play_panel.SetActive(false);
 		game_panel.SetActive(true);
@@ -202,23 +349,6 @@ public class SongMenuManager : MonoBehaviour
 		float ratio = (y + 0.5f) / song_list.Count;
 		return (1 - ratio) * (1 - space_ratio * 2f) + space_ratio;
 	}
-	
-	/*
-	private void SwapSongProperties(int i, int j){
-		string tmp_name = song_properties_list[i].name;
-		song_properties_list[i].name = song_properties_list[j].name;
-		song_properties_list[j].name = tmp_name;
-		
-		song_properties_list[i].difficulty ^= song_properties_list[j].difficulty;
-		song_properties_list[i].difficulty ^= song_properties_list[j].difficulty ^= song_properties_list[i].difficulty;
-		
-		song_properties_list[i].best_score ^= song_properties_list[j].best_score;
-		song_properties_list[i].best_score ^= song_properties_list[j].best_score ^= song_properties_list[i].best_score;
-		
-		string tmp_rank = song_properties_list[i].rank;
-		song_properties_list[i].rank = song_properties_list[j].rank;
-		song_properties_list[j].rank = tmp_name;
-	}*/
 	
 	private void Sort(string type){ // name, difficulty, score
 		if (type == sorting_state)
@@ -251,10 +381,9 @@ public class SongMenuManager : MonoBehaviour
 				return is_ascending ? a.difficulty >= b.difficulty : a.difficulty <= b.difficulty;
 			
 			case "score":
-				return is_ascending ? a.best_score >= b.best_score : a.best_score <= b.best_score;
+				return is_ascending ? a.accuracy >= b.accuracy : a.accuracy <= b.accuracy;
 			
 			default:
-			print("here");
 				return true;
 		}
 	}
@@ -264,13 +393,17 @@ public class SongProperties{
 	public GameObject button;
 	public string name;
 	public int difficulty;
+	public int BPM;
 	public int best_score;
+	public float accuracy;
 	public int rank;
 	
 	public void Assign(SongProperties other){
 		this.name = other.name;
 		this.difficulty = other.difficulty;
-		this.best_score = other.difficulty;
+		this.BPM = other.BPM;
+		this.best_score = other.best_score;
+		this.accuracy = other.accuracy;
 		this.rank = other.rank;
 	}
 	
@@ -282,15 +415,21 @@ public class SongProperties{
 		this.difficulty ^= other.difficulty;
 		this.difficulty ^= other.difficulty ^= this.difficulty;
 		
+		this.BPM ^= other.BPM;
+		this.BPM ^= other.BPM ^= this.BPM;
+		
 		this.best_score ^= other.best_score;
 		this.best_score ^= other.best_score ^= this.best_score;
 		
-		int tmp_rank = this.rank;
-		this.rank = other.rank;
-		other.rank = tmp_rank;
+		float tmp_accuracy = this.accuracy;
+		this.accuracy = other.accuracy;
+		other.accuracy = tmp_accuracy;
+		
+		this.rank ^= other.rank;
+		this.rank ^= other.rank ^= this.rank;
 	}
 	
 	public void Print(){
-		Debug.Log($"name: {name}, difficulty: {difficulty}, best score: {best_score}, rank: {rank}");
+		Debug.Log($"name: {name}, difficulty: {difficulty}, BPM: {BPM}, best score: {best_score}, accuracy: {accuracy}, rank: {rank}");
 	}
 }

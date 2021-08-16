@@ -17,7 +17,7 @@ public class ImageManager : MonoBehaviour
 	private string[] score_type_list = new string[] {"excellent", "good", "bad"};
 	private string[] rank_type_list = new string[] {"SS", "S", "A", "B", "C", "D"};
 	
-	void Start(){
+	void Awake(){
 		for (int i = 0; i < player_image.Count; i++){
 			for (int j = 0; j < 2; j++)
 				player_image[i].image.Add(atlas.GetSprite(skin_name[i] + "_" + player_type_list[j]));
