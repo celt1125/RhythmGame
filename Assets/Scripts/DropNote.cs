@@ -57,7 +57,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 				break;
 			
 			case "ornament":
-				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
+				sprite_renderer.size = new Vector2(regular_size * 0.35f, regular_size * 0.5f);
 				GetComponent<Rigidbody2D>().AddTorque(Random.Range(150.0f, 200.0f));
 				break;
 			
@@ -94,13 +94,13 @@ public class DropNote : MonoBehaviour, IPooledObject
 				sprite_renderer.size = new Vector2(regular_size, regular_size);
 				dropping = true;
 				circle_collider.radius = regular_size * 0.32f;
-				GetComponent<Rigidbody2D>().AddTorque(Random.Range(100.0f, 150.0f));
+				GetComponent<Rigidbody2D>().AddTorque(Random.Range(50.0f, 150.0f));
 				break;
 				
 			case "ornament":
 				osu_ring.GetComponent<SpriteRenderer>().sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[4];
 				sprite_renderer.sprite = IM.note_image[PlayerPrefs.GetInt("skin")].image[1];
-				sprite_renderer.size = new Vector2(regular_size * 0.5f, regular_size * 0.5f);
+				sprite_renderer.size = new Vector2(regular_size * 0.35f, regular_size * 0.5f);
 				dropping = true;
 				circle_collider.radius = regular_size * 0.16f;
 				GetComponent<Rigidbody2D>().AddTorque(Random.Range(150.0f, 200.0f));

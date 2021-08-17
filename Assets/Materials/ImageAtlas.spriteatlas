@@ -47,7 +47,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 2
+      padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
@@ -58,7 +58,7 @@ SpriteAtlas:
     - {fileID: 102900000, guid: 1fdc4924400e75e4698e2975e336500e, type: 3}
     - {fileID: 102900000, guid: 18798e1fc44b2534f9b2c4d2b391e75f, type: 3}
     - {fileID: 102900000, guid: c22304d3d5873a447bec61bd6b0b6da5, type: 3}
-    totalSpriteSurfaceArea: 4823791
+    totalSpriteSurfaceArea: 3970035
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -77,8 +77,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 509113e762f93c0418d5cbaf93de46c7, type: 3}
   - {fileID: 21300000, guid: 0b1072f7739e23143ac5ceb0fdbf80c0, type: 3}
   - {fileID: 21300000, guid: 304cc1394b7c3c14ab0288d161b39f10, type: 3}
-  - {fileID: 21300000, guid: 899590b9666f12e4eaa93f7fbcc10096, type: 3}
-  - {fileID: 21300000, guid: 1514afb982934044bac75bca3b781fc4, type: 3}
   - {fileID: 21300000, guid: 1fef3d6a3f190a64f86a26a13d80cb19, type: 3}
   - {fileID: 21300000, guid: f35dceaa490d0414ba21300f8f1832a2, type: 3}
   - {fileID: 21300000, guid: 58b6b9ea15a2b1e468e9771094deb5fc, type: 3}
@@ -87,7 +85,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9a17127bb33b39a4b82cfc9099c4b68f, type: 3}
   - {fileID: 21300000, guid: 8ae1700c9f4de134b97b958299f9777c, type: 3}
   - {fileID: 21300000, guid: 4fe8c43cb735dc24ba5d25d553bea723, type: 3}
-  - {fileID: 21300000, guid: b740d45cdf3e4a3498f7fcd6fded16b5, type: 3}
   - {fileID: 21300000, guid: 3b66017c417461a41b64f16a47a7ae5e, type: 3}
   - {fileID: 21300000, guid: 9e8fbdbc00825e94f9a06513410c8ef7, type: 3}
   - {fileID: 21300000, guid: 1db5bc7d8dac6904a82801572b505b7b, type: 3}
@@ -107,8 +104,6 @@ SpriteAtlas:
   - B
   - default_osu
   - taichi_auxiliary
-  - default_good1
-  - default_excellent1
   - default_cross
   - taichi_cross
   - A
@@ -117,7 +112,6 @@ SpriteAtlas:
   - default_auxiliary
   - default_main
   - D
-  - default_bad1
   - taichi_player
   - taichi_ornament
   - S

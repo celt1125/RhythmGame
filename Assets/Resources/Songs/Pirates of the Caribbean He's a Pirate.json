@@ -1,0 +1,3382 @@
+{
+   "name": "Pirates of the Caribbean He's a Pirate",
+   "speed": 0.95,
+   "difficulty": 7,
+   "BPM": 207,
+   "notes": [{
+         "note_type": "osu",
+         "timing": 0.723356,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 0.723356,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 1.013211,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 1.158139,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 1.447994,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 1.520457,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 1.592921,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 1.665385,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 1.737849,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 1.810313,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 1.882776,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 2.317559,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 2.462486,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 2.462486,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 2.752342,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 2.824805,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 2.897269,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 2.969733,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 3.042197,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 3.11466,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 3.187124,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 3.621907,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 3.911762,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 4.056689,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 4.491472,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 4.636399,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 4.926255,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.071182,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 5.071182,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.361037,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.505965,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.650892,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 5.79582,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 5.940747,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 5.940747,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.230602,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.520457,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.665385,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 6.810313,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 6.810313,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 7.100168,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 7.390023,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 7.53495,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 7.679878,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 7.679878,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 7.969733,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 8.259588,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 8.404515,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 8.694371,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 8.74268,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 8.790989,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 8.839298,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 8.887607,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 8.935916,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 8.984226,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 9.032535,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 9.080844,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 9.129153,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.129153,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.274081,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 9.419008,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 9.419008,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.708863,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 9.998718,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.14365,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.28857,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 10.28857,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.57843,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 10.86828,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 11.01321,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 11.15814,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 11.15814,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 11.44799,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 11.73785,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 11.88278,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 12.0277,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 12.0277,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.09212,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.15653,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.22094,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 12.28535,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.34977,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.41418,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.47859,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 12.543,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 12.60741,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 12.60741,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 12.75234,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 12.89727,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 12.89727,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.18712,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.47698,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.62191,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 13.76683,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 13.76683,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.05669,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.34654,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.49147,
+         "position": 8,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 14.6364,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 14.6364,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 14.92625,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 15.21611,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 15.36104,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 15.50596,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 15.50596,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 15.65089,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.6992,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.74751,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.79582,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 15.84413,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.89244,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.94075,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 15.98906,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 16.03737,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 16.08567,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.08567,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.2306,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 16.37553,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 16.37553,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.66538,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 16.95524,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.2451,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 17.2451,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.39002,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.43833,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.48664,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.53495,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 17.58326,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.63157,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.67988,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.72819,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 17.7765,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 17.82481,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.82481,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 17.96973,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 18.11466,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 18.11466,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.40452,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.69437,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.8393,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 18.98423,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 18.98423,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.02882,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.07341,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.118,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 19.1626,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.20719,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.25178,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.29638,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 19.34097,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.38556,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.43016,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.47475,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 19.51934,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 19.56394,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 19.56394,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 19.70886,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 19.85379,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 19.85379,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.14365,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.4335,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.57843,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 20.72336,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 20.72336,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.01321,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.30307,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.44799,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 21.59292,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 21.59292,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 21.88278,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.17263,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.31756,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.46249,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 22.46249,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 22.60741,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.65572,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.70403,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.75234,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 22.80065,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.84896,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.89727,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 22.94558,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 22.99389,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 23.0422,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 23.0422,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 23.18712,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 23.33205,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 23.33205,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 23.62191,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 23.91176,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 24.05669,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 24.20162,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 24.20162,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 24.49147,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 24.78133,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 24.92625,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 25.07118,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 25.07118,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 25.36104,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 25.65089,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 25.79582,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 25.94075,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 25.94075,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.00516,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.06957,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.13398,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 26.1984,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.26281,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.32722,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.39163,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 26.45605,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 26.52046,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 26.52046,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 26.66538,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 26.81031,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 26.81031,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 27.10017,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 27.39002,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 27.53495,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 27.67988,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 27.67988,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 27.96973,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 28.25959,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 28.40452,
+         "position": 8,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 28.54944,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 28.54944,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 28.8393,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 29.12915,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 29.27408,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 29.41901,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 29.41901,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 29.56394,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 29.6364,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 29.70886,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 29.78133,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 29.85379,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 29.92625,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 29.99872,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 30.14365,
+         "position": 12,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 30.28857,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 30.28857,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 30.57843,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 30.86828,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 31.15814,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 31.15814,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 31.30307,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 31.37553,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 31.44799,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 31.52046,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 31.59292,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 31.66538,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 31.73785,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 31.88278,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 32.0277,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 32.0277,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 32.31756,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 32.60741,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 32.75234,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 32.89727,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 32.89727,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 33.18712,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 33.47698,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 33.76683,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 33.76683,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 34.05669,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 34.20162,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 34.34654,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 34.6364,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 34.6364,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.67505,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.71369,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.75234,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 34.79099,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.82964,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.86828,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.90693,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 34.94558,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 34.98423,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.02287,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.06152,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 35.10017,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.13881,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.17746,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.21611,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 35.21611,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 35.36104,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 35.50596,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 35.50596,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.57843,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.65089,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 35.72336,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.79582,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.86828,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 35.94075,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.01321,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.08567,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.15814,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.2306,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.30307,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 36.37553,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 36.37553,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.40963,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.44373,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.47783,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.51193,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.54603,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.58013,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.61423,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.64833,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.68244,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.71654,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.75064,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.78474,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.81884,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.85294,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.88704,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 36.92114,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 36.95524,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 36.95524,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 37.10017,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 37.2451,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 37.2451,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.31756,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.39002,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 37.46249,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.53495,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.60741,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.67988,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 37.75234,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.82481,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.89727,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 37.96973,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 38.0422,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 38.11466,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 38.11466,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 38.25959,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 38.54944,
+         "position": 10,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 38.98423,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 38.98423,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.05669,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.12915,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.20162,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 39.27408,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.34654,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.41901,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 39.49147,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 39.56394,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 39.70886,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 39.85379,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 39.85379,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 40.14365,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 40.4335,
+         "position": 0,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 40.72336,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 40.72336,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 40.86828,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 40.90642,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 40.94456,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 40.9827,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 41.02084,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.05898,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.09712,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.13526,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 41.17339,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.21153,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.24967,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.28781,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 41.32595,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.36409,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.40223,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.44037,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 41.4785,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.51664,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.55478,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 41.59292,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 41.59292,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 41.59292,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 41.88278,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 42.17263,
+         "position": 20,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 42.46249,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 42.46249,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 42.60741,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 42.67988,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 42.75234,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 42.82481,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 42.89727,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 42.96973,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 43.0422,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 43.11466,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 43.18712,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 43.25959,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 43.33205,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 43.33205,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 43.62191,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 43.91176,
+         "position": 0,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 44.20162,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 44.20162,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 44.34654,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.38468,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.42282,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.46096,
+         "position": 3,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 44.4991,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.53724,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.57538,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.61352,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 44.65166,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.68979,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.72793,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.76607,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 44.80421,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.84235,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.88049,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.91863,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 44.95677,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 44.9949,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 45.03304,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 45.07118,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 45.07118,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 45.07118,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 45.36104,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 45.65089,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 45.94075,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 45.94075,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.01321,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.08567,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.15814,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 46.2306,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.30307,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.37553,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.44799,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 46.52046,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 46.66538,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 46.81031,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 46.81031,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.88278,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 46.95524,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 47.0277,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 47.10017,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 47.17263,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 47.2451,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 47.31756,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 47.39002,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 47.53495,
+         "position": 8,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 47.67988,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 47.67988,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 47.96973,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 48.25959,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 48.54944,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 48.54944,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 48.8393,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 49.12915,
+         "position": 0,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 49.41901,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 49.41901,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 49.49147,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 49.56394,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 49.6364,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 49.70886,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 49.78133,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 49.85379,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 49.92625,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 49.99872,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 50.14365,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 50.28857,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 50.28857,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.34127,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.39398,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.44668,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 50.49938,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.55208,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.60478,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.65748,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 50.71018,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.76288,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.81558,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 50.86828,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 50.86828,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 51.01321,
+         "position": 16,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 51.15814,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 51.15814,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 51.44799,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 51.73785,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 52.0277,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 52.0277,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.10017,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.17263,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 52.2451,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.31756,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.39002,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.46249,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 52.53495,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 52.60741,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 52.75234,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 52.89727,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 52.89727,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 52.96973,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.0422,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.11466,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 53.18712,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.25959,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.33205,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.40452,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 53.47698,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 53.62191,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 53.76683,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 53.76683,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.8393,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 53.91176,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 53.98423,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 54.05669,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 54.12915,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 54.20162,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 54.27408,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 54.34654,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 54.49147,
+         "position": 16,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 54.6364,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 54.6364,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 54.92625,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 55.21611,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 55.50596,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 55.50596,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 55.79582,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 56.08567,
+         "position": 16,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 56.37553,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 56.37553,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.44799,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.52046,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.59292,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 56.66538,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.73785,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.81031,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 56.88278,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 56.95524,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 57.10017,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 57.2451,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 57.2451,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 57.53495,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 57.82481,
+         "position": 0,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 58.11466,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 58.11466,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 58.40452,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 58.69437,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 58.98423,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 58.98423,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.05669,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.12915,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 59.20162,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.27408,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.34654,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.41901,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 59.49147,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 59.56394,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 59.70886,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 59.85379,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 59.85379,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.92625,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 59.99872,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 60.07118,
+         "position": 11,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 60.14365,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 60.21611,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 60.28857,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 60.36104,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 60.4335,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 60.57843,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 60.72336,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 60.72336,
+         "position": 22,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 61.59292,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 61.59292,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 61.66538,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 61.73785,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 61.81031,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 61.88278,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 61.95524,
+         "position": 2,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 62.0277,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 62.10017,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 62.17263,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 62.2451,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 62.31756,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 62.39002,
+         "position": 1,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 62.46249,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 62.46249,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 62.75234,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 63.0422,
+         "position": 0,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 63.33205,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 63.33205,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 63.47698,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 63.54944,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 63.62191,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 63.69437,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 63.76683,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 63.8393,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 63.91176,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 63.98423,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 64.05669,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 64.12915,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 64.20162,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 64.20162,
+         "position": 2,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 65.07118,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 65.07118,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.14365,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.21611,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 65.28857,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.36104,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.4335,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.50596,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 65.57843,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.65089,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.72336,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 65.79582,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 65.86828,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 65.94075,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 65.94075,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 66.2306,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 66.52046,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 66.81031,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 66.81031,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 66.95524,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 67.2451,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 67.39002,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 67.53495,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 67.67988,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 67.67988,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 67.76683,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 67.85379,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 67.94075,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 68.0277,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 68.11466,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 68.11466,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 68.25959,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 68.40452,
+         "position": 16,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 68.54944,
+         "position": 4,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 68.54944,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 68.6364,
+         "position": 5,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 68.72336,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 68.81031,
+         "position": 7,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 68.89727,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 68.98423,
+         "position": 9,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 68.98423,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 69.12915,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 69.27408,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 69.41901,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 69.41901,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 69.70886,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 69.99872,
+         "position": 6,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 70.28857,
+         "position": 0,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 70.28857,
+         "position": 22,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 70.4335,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 70.50596,
+         "position": 12,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 70.57843,
+         "position": 13,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 70.65089,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 70.72336,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 70.79582,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 70.86828,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 70.94075,
+         "position": 17,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 71.01321,
+         "position": 18,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 71.08567,
+         "position": 19,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 71.15814,
+         "position": 20,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 71.15814,
+         "position": 2,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 72.0277,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 72.0277,
+         "position": 6,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.10017,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.17263,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 72.2451,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.31756,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.39002,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.46249,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 72.53495,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.60741,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.67988,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "auxiliary",
+         "timing": 72.75234,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "ornament",
+         "timing": 72.82481,
+         "position": 15,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 72.89727,
+         "position": 14,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 72.89727,
+         "position": 8,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 73.18712,
+         "position": 16,
+         "clear": false
+      },{
+         "note_type": "main",
+         "timing": 73.47698,
+         "position": 14,
+         "clear": true
+      },{
+         "note_type": "main",
+         "timing": 73.76683,
+         "position": 10,
+         "clear": false
+      },{
+         "note_type": "osu",
+         "timing": 73.76683,
+         "position": 12,
+         "clear": true
+      }]
+}

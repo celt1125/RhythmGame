@@ -176,6 +176,10 @@ public class SongMenuManager : MonoBehaviour
 	
 	public void UpdateSongStatus(string song_name){
 		int pos = song_list.FindIndex(s => s == song_name);
+		song_properties_list[pos].best_score = PlayerPrefs.GetInt(song_name + "bestscore");
+		song_properties_list[pos].accuracy = PlayerPrefs.GetFloat(song_name + "accuracy");
+		song_properties_list[pos].rank = PlayerPrefs.GetInt(song_name + "rank");
+		
 		best_score_text.text = PlayerPrefs.GetInt(song_name + "bestscore").ToString();
 		accuracy_text.text = PlayerPrefs.GetFloat(song_name + "accuracy").ToString("F1") + "%";
 		rank_img.color = new Color(1, 1, 1, 1);
@@ -338,16 +342,18 @@ public class SongMenuManager : MonoBehaviour
 	private int Ratio2Position(float x){
 		// space/scroll_height => 1
 		// 1 - space/scroll_height => 0
-		x = x < space_ratio ? space_ratio : x;
-		x = x > 1 - space_ratio ? 1 - space_ratio : x;
-		float y = 1 - (x - space_ratio) / (1 - space_ratio * 2f);
+		//x = x < space_ratio ? space_ratio : x;
+		//x = x > 1 - space_ratio ? 1 - space_ratio : x;
+		//float y = 1 - (x - space_ratio) / (1 - space_ratio * 2f);
 		//print($"{y}, {(int)Mathf.Round((1 - y) * (song_list.Count - 1))}");
-		return (int)Mathf.Round(y * (song_list.Count - 1));
+		//return (int)Mathf.Round(x * (song_list.Count - 1));
+		return (int)Mathf.Round((1 - x) * (song_list.Count - 1));
 	}
 	
 	private float Position2Ratio(int y){
 		float ratio = (y + 0.5f) / song_list.Count;
-		return (1 - ratio) * (1 - space_ratio * 2f) + space_ratio;
+		return 1 - ratio;
+		//return (1 - ratio) * (1 - space_ratio * 2f) + space_ratio;
 	}
 	
 	private void Sort(string type){ // name, difficulty, score

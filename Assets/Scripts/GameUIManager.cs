@@ -171,6 +171,7 @@ public class GameUIManager : MonoBehaviour
 			rhythm_game.ClearAllNotes();
 			rhythm_game.EndGame(false);
 			rhythm_game.black_fade_sprite.color = new Color(0, 0, 0, 0);
+			rhythm_game.player.SetActive(false);
 			SMM.ShowSongMenu();
 		}));
 	}
