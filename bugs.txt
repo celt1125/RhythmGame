@@ -1,2 +1,0 @@
-pirates: notes are wrong
-summer: auxiliarys bug

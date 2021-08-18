@@ -102,6 +102,7 @@ public class RhythmGame : MonoBehaviour
 		
 		ClearAllNotes();
 		player.SetActive(true);
+		player.GetComponent<Player>().InitializePosition();
 	}
 	
 	public void InitializeSong(){
@@ -118,6 +119,7 @@ public class RhythmGame : MonoBehaviour
 		
 		ClearAllNotes();
 		player.SetActive(true);
+		player.GetComponent<Player>().InitializePosition();
 	}
 	 
 	private void DropNote(Note note){

@@ -25,6 +25,7 @@ public class GameUIManager : MonoBehaviour
 	public TMP_Text accuracy_text;
 	public Transform rank_img;
 	
+	private bool calculating;
 	private string current_song_name;
 	private Vector2 move_pos;
 	
@@ -93,6 +94,7 @@ public class GameUIManager : MonoBehaviour
 	}
 	
 	private IEnumerator SetScore(string song_name, int score, float accuracy){
+		calculating = true;
 		for (float time = 0f; time < 1f; time += Time.deltaTime)
 			yield return null;
 		for (float time = 0f; time < 1f; time += Time.deltaTime * 0.6f){
@@ -138,6 +140,7 @@ public class GameUIManager : MonoBehaviour
 			yield return null;
 		}
 		rank_recttransform.sizeDelta = new Vector2(rank_rect.width, rank_rect.height);
+		calculating = false;
 	}
 	
 	private void ResetScoreboard(){
@@ -177,6 +180,8 @@ public class GameUIManager : MonoBehaviour
 	}
 	
 	public void ScoreboardToGame(){
+		if (calculating)
+			return;
 		StartCoroutine(FadeOut(() => {
 			score_board.SetActive(false);
 			game_panel.SetActive(true);
@@ -184,6 +189,8 @@ public class GameUIManager : MonoBehaviour
 	}
 	
 	public void ScoreboardToMenu(){
+		if (calculating)
+			return;
 		SMM.UpdateSongStatus(current_song_name);
 		StartCoroutine(FadeOut(() => {
 			score_board.SetActive(false);

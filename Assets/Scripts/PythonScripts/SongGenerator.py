@@ -256,23 +256,23 @@ def GetNotes(onset, freq, amp, tempo):
                             difficulty += 1
                             other_pos = notes_dict[tmp]["position"]
                             if (other_pos < position):
-                                if (position - other_pos > 7):
+                                if (position - other_pos > 4):
                                     difficulty += 1
-                                    position = other_pos + 8
+                                    position = other_pos + 4
                             else:
-                                if (other_pos - position > 7):
+                                if (other_pos - position > 4):
                                     difficulty += 1
-                                    position = other_pos - 8
+                                    position = other_pos - 4
                         elif (abs(notes_dict[tmp]["timing"] - notes[i][1]) < delta * 2.2):
                             other_pos = notes_dict[tmp]["position"]
                             if (other_pos < position):
-                                if (position - other_pos > 11):
+                                if (position - other_pos > 8):
                                     difficulty += 1
-                                    position = other_pos + 12
+                                    position = other_pos + 8
                             else:
-                                if (other_pos - position > 11):
+                                if (other_pos - position > 8):
                                     difficulty += 1
-                                    position = other_pos - 12
+                                    position = other_pos - 8
                             
                         break
                     else:

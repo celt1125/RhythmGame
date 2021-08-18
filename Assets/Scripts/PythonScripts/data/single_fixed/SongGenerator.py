@@ -96,7 +96,7 @@ def Mean(arr):
         return sum_ / n
 
 # 對人聲分離的音檔用librosa偵測onset
-def GenerateSong(song_name, song_path, read):
+def GenerateSong(song_name, song_path):
     if(not os.path.isfile(song_path)):
         print("No such file.")
         return None
@@ -116,7 +116,7 @@ def GenerateSong(song_name, song_path, read):
     onset_sf, tempo = GetOnset(S, sr);
     
     # frequency estimate
-    if (read):
+    if (os.path.isfile(song_name[:-5] + " f0.json")):
         f0 = ReadJSONArray(song_name[:-5] + " f0.json")
     else:
         print("get frequency")
@@ -135,6 +135,7 @@ def GenerateSong(song_name, song_path, read):
     amplitude = [Mean(amplitude[0][k:k+5]) for k in onset_sf]
     #print(amplitude)
     
+    tempo = forced_tempo
     onset_sf = librosa.frames_to_time(onset_sf,
                                       sr=sr,
                                       hop_length=hop_length)
@@ -194,9 +195,6 @@ def GetAmplitude(y):
     return rms
 
 def GetNotes(onset, freq, amp, tempo):
-    tempo = 207
-    difficulty = 0
-    
     delta = 15 / tempo
     time = onset[0]
     notes = []
@@ -209,8 +207,6 @@ def GetNotes(onset, freq, amp, tempo):
             if (abs(notes[-1][1] - time) > delta * 0.1):
                 if (abs(onset[i] - time) < delta * 0.25):
                     notes.append([amp[i], time, freq[i], note_position])
-                    if (note_position % (4 * notes_in_bar) == 0):
-                        notes.append([-1, time, freq[i], note_position])
         else:
             notes.append([-1, time, freq[i], note_position])
             notes.append([amp[i], time, freq[i], note_position])
@@ -239,47 +235,50 @@ def GetNotes(onset, freq, amp, tempo):
                             is_end = True
                             notes_dict[-1]["clear"] = True
                             accumulated_notes = 0
-            
-            if (notes[i][0] == -1):
-                note_type = "osu"
-            else:
-                note_type = "main"
-            
-            if (note_type == "osu"):
-                position = 22 - note_list.index(notes[i][2]) * 2
-            else:
-                tmp = len(notes_dict) - 1
-                position = note_list.index(notes[i][2]) * 2
-                while (tmp >= 0):
-                    if (notes_dict[tmp]["note_type"] != "osu"):
-                        if (abs(notes_dict[tmp]["timing"] - notes[i][1]) < delta * 1.1):
-                            difficulty += 1
-                            other_pos = notes_dict[tmp]["position"]
-                            if (other_pos < position):
-                                if (position - other_pos > 7):
-                                    difficulty += 1
-                                    position = other_pos + 8
-                            else:
-                                if (other_pos - position > 7):
-                                    difficulty += 1
-                                    position = other_pos - 8
-                        elif (abs(notes_dict[tmp]["timing"] - notes[i][1]) < delta * 2.2):
-                            other_pos = notes_dict[tmp]["position"]
-                            if (other_pos < position):
-                                if (position - other_pos > 11):
-                                    difficulty += 1
-                                    position = other_pos + 12
-                            else:
-                                if (other_pos - position > 11):
-                                    difficulty += 1
-                                    position = other_pos - 12
-                            
-                        break
-                    else:
-                        tmp -= 1
                 
-                accumulated_notes += 1
+                if (notes[i - 1][3] % (4 * notes_in_bar) == 0):
+                    if (notes[i][3] - notes[i - 1][3] > 1.5):
+                        notes_dict.append({"note_type": "osu",
+                                           "timing": notes_dict[-1]["timing"],
+                                           "position": 22 - notes_dict[-1]["position"],
+                                           "clear": False})
             
+            note_type = "main"
+            
+            tmp = len(notes_dict) - 1
+            position = note_list.index(notes[i][2]) * 2
+            while (tmp >= 0):
+                if (notes_dict[tmp]["note_type"] != "osu"):
+                    if (abs(notes_dict[tmp]["timing"] - notes[i][1]) < 0.13):
+                        other_pos = notes_dict[tmp]["position"]
+                        if (other_pos < position):
+                            if (position - other_pos > 4):
+                                position = other_pos + 4
+                        else:
+                            if (other_pos - position > 4):
+                                position = other_pos - 4
+                    elif (abs(notes_dict[tmp]["timing"] - notes[i][1]) < 0.22):
+                        other_pos = notes_dict[tmp]["position"]
+                        if (other_pos < position):
+                            if (position - other_pos > 6):
+                                position = other_pos + 6
+                        else:
+                            if (other_pos - position > 6):
+                                position = other_pos - 6
+                    elif (abs(notes_dict[tmp]["timing"] - notes[i][1]) < 0.3):
+                        other_pos = notes_dict[tmp]["position"]
+                        if (other_pos < position):
+                            if (position - other_pos > 8):
+                                position = other_pos + 8
+                        else:
+                            if (other_pos - position > 8):
+                                position = other_pos - 8
+                        
+                    break
+                else:
+                    tmp -= 1
+            
+            accumulated_notes += 1
         else:
             t += delta
             continue
@@ -368,7 +367,7 @@ def GetNotes(onset, freq, amp, tempo):
         i += 1
     
     notes_dict[-1]["clear"] = True
-    print("difficulty:", difficulty)
+    
     return notes_dict
 
 def PlotOnset(odf_sf, onset_sf, S):
@@ -389,20 +388,20 @@ def PlotOnset(odf_sf, onset_sf, S):
     ax[0].legend()
     ax[0].label_outer()
 
-def main(song_name, read):
+def main(song_name):
     # paths
     program_path = os.path.dirname(__file__)
     song_path = os.path.join(program_path, song_name + ".wav")
     JSON_path = os.path.join(program_path, song_name + '.json')
     
     # generate song
-    notes, tempo = GenerateSong(song_name + ".json", song_path, read)
+    notes, tempo = GenerateSong(song_name + ".json", song_path)
     song = {"name": song_name,
-            "speed": -0.01 * tempo + 2.8,
-            "difficulty": 0,
+            "speed": (207 - tempo) / 140 + 1,
+            "difficulty": difficulty,
             "BPM": tempo,
             "notes": notes}
-    print(tempo)
+    
     # write in json
     WriteJSON(JSON_path, song)
 
@@ -412,18 +411,19 @@ def test():
     print(y)
 
 if __name__ == "__main__":
-    notes_in_bar = 3
     song_list = ["Canon in D", "Carol of the Bells", "Gravity Falls Opening",
                  "Greensleeves", "Jojo's Bizarre Adventure Giorno's Theme",
                  "Little Star", "Minuet in G Major Bach", "Passacaglia",
                  "Pirates of the Caribbean He's a Pirate", "Summer",
                  "Theme from Schindler's List", "Wellerman"]
     bar_list = [4, 3, 4, 3, 4, 4, 3, 4, 3, 4, 4, 4]
-    notes_in_bar = 3
-    main("Pirates of the Caribbean He's a Pirate", False)
+    tempo_list = [120, 180, 160, 120, 130, 120, 120, 130, 207, 90, 62, 93]
+    diff_list = [5, 7, 4, 2, 4, 1, 3, 4, 6, 4, 2, 4]
     for i in range(len(song_list)):
         print(song_list[i])
         notes_in_bar = bar_list[i]
-        #main(song_list[i], False)
+        forced_tempo = tempo_list[i]
+        difficulty = diff_list[i]
+        main(song_list[i])
     #test()
     

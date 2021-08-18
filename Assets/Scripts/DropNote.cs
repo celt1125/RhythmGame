@@ -186,7 +186,7 @@ public class DropNote : MonoBehaviour, IPooledObject
 		}
 	}
 	
-	void OnMouseDown(){
+	public void TouchEvent(){
 		if (!dropping){
 			float ratio = AbsFloat((speed - time) / speed * 2f);
 			freeze = true;
